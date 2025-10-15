@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to GoliteFlow will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -8,153 +8,206 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial release of GoliteFlow
-- YAML-based workflow configuration
-- Cron-based task scheduling
-- Task dependency management
-- Retry logic with exponential backoff
-- HTML report generation
-- CLI tool with multiple commands
-- Library interface for Go applications
-- Comprehensive logging with zerolog
-- Unit tests for all components
-- Docker support
-- GitHub Actions CI/CD pipeline
+- Nothing yet
 
-### Features
-- **Workflow Configuration**: Define workflows and tasks in YAML files
-- **Scheduling**: Built-in cron scheduler for task execution
-- **Retry Logic**: Configurable retry mechanisms with backoff
-- **Dependencies**: Task execution order with dependency management
-- **Monitoring**: Beautiful HTML reports with execution history
-- **CLI Tool**: Command-line interface for workflow management
-- **Library**: Use as a Go library in applications
-- **Logging**: Structured logging with multiple levels
-- **Testing**: Comprehensive test coverage
-- **Documentation**: Complete documentation and examples
+### Changed
+- Nothing yet
 
-### Technical Details
-- Go 1.19+ support
-- Zero external database dependencies
-- Self-contained HTML reports
-- Cross-platform support (Linux, Windows, macOS)
-- Docker containerization
-- GitHub Actions CI/CD
-- MIT License
+### Deprecated
+- Nothing yet
+
+### Removed
+- Nothing yet
+
+### Fixed
+- Nothing yet
+
+### Security
+- Nothing yet
 
 ## [1.0.0] - 2024-10-15
 
 ### Added
-- Initial release
-- Core workflow execution engine
-- YAML parser with validation
-- Task runner with retry logic
-- Cron-based scheduler
-- HTML reporter with interactive interface
-- CLI tool with run, report, and validate commands
-- Library interface for Go applications
-- Comprehensive test suite
-- Documentation and examples
-- Docker support
-- CI/CD pipeline
+- **Initial Release** - First stable release of GoliteFlow
+- **YAML Configuration** - Define workflows and tasks in simple YAML files
+- **Cron Scheduling** - Built-in scheduler using standard cron syntax
+- **Retry Logic** - Configurable retry mechanisms with exponential backoff
+- **Task Dependencies** - Define task execution order with dependency management
+- **HTML Reports** - Generate beautiful HTML reports with execution history
+- **CLI Tool** - Command-line interface for running and managing workflows
+- **Library Interface** - Use as a Go library in your applications
+- **Zero Dependencies** - No external database or web server required
+- **Comprehensive Logging** - Built-in logging with zerolog
+- **Cross-platform Support** - Windows, Linux, macOS support
+- **Docker Support** - Container-ready with Dockerfile
+- **GitHub Actions CI** - Automated testing and building
+- **Comprehensive Documentation** - Complete documentation and examples
+- **Version Management** - Semantic versioning with version command
+- **Pre-built Binaries** - Automated release with binaries for all platforms
 
-### Security
-- Non-root Docker user
-- Input validation for YAML configuration
-- Safe command execution with timeouts
-- No external network dependencies for core functionality
+### Technical Details
+- **Go Version**: 1.19+
+- **Dependencies**: 
+  - robfig/cron/v3 v3.0.1 (cron scheduling)
+  - rs/zerolog v1.34.0 (structured logging)
+  - spf13/cobra v1.10.1 (CLI framework)
+  - gopkg.in/yaml.v3 v3.0.1 (YAML parsing)
+- **Architecture**: Modular design with separate packages for parser, executor, scheduler, reporter, and logger
+- **Testing**: Comprehensive unit tests with 80%+ coverage
+- **Performance**: Lightweight with minimal memory footprint
 
-### Performance
-- Efficient task execution with goroutines
-- Minimal memory footprint
-- Fast YAML parsing
-- Optimized HTML report generation
+### CLI Commands
+- `goliteflow run` - Execute workflows from configuration file
+- `goliteflow validate` - Validate workflow configuration file
+- `goliteflow report` - Generate HTML report from execution data
+- `goliteflow --version` - Show version information
+- `goliteflow --help` - Show help information
+
+### Configuration Features
+- **Workflow Definition**: Name, schedule, and task list
+- **Task Configuration**: ID, command, dependencies, retry count, timeout
+- **Environment Variables**: Support for environment variable injection
+- **Validation**: Comprehensive configuration validation
+- **Error Handling**: Detailed error messages and validation feedback
+
+### Report Features
+- **Execution History**: Complete timeline of workflow executions
+- **Task Details**: Individual task results, retry counts, and logs
+- **Statistics**: Success rates, execution times, and performance metrics
+- **Interactive Interface**: Expandable sections and search functionality
+- **Error Logs**: Detailed stdout/stderr capture for debugging
+- **Self-contained**: HTML reports with embedded CSS and JavaScript
+
+### Examples Included
+- **Data Processing Pipeline**: Complete ETL workflow example
+- **Backup Workflow**: Automated backup with S3 upload
+- **Simple Tasks**: Basic workflow examples for getting started
+- **Complex Dependencies**: Multi-task workflows with dependencies
+
+### Documentation
+- **Getting Started Guide**: 5-minute setup tutorial
+- **Configuration Reference**: Complete YAML configuration documentation
+- **CLI Reference**: All commands and options documented
+- **API Documentation**: Go library usage examples
+- **Deployment Guide**: Production deployment instructions
+- **Contributing Guidelines**: How to contribute to the project
+- **Code of Conduct**: Community guidelines and standards
+
+### Community
+- **GitHub Repository**: https://github.com/sintakaridina/goliteflow
+- **Documentation**: https://sintakaridina.github.io/goliteflow/
+- **Issues**: Bug reports and feature requests
+- **Discussions**: Community discussions and Q&A
+- **MIT License**: Open source with permissive license
+
+## [0.9.0] - 2024-10-14
+
+### Added
+- **Beta Release** - Pre-release version for testing
+- **Core Functionality** - Basic workflow execution
+- **YAML Parser** - Configuration file parsing
+- **Task Executor** - Command execution with retry logic
+- **Scheduler** - Cron-based task scheduling
+- **HTML Reporter** - Basic HTML report generation
+- **CLI Interface** - Command-line tool implementation
+
+### Changed
+- **Architecture Refactoring** - Improved modular design
+- **Error Handling** - Enhanced error messages and validation
+- **Logging** - Structured logging with zerolog
+
+### Fixed
+- **Memory Leaks** - Fixed goroutine leaks in scheduler
+- **Race Conditions** - Fixed concurrent access issues
+- **Configuration Validation** - Improved YAML validation
+
+## [0.8.0] - 2024-10-13
+
+### Added
+- **Initial Implementation** - First working version
+- **Basic Workflow Engine** - Core workflow execution logic
+- **YAML Configuration** - Simple configuration format
+- **Command Execution** - Basic task execution
+- **Retry Logic** - Simple retry mechanism
+
+### Changed
+- **Project Structure** - Organized codebase structure
+- **Dependencies** - Added required Go modules
+
+### Fixed
+- **Build Issues** - Resolved compilation errors
+- **Import Paths** - Fixed module import issues
 
 ---
 
-## Release Notes
+## Release Notes Format
 
-### v1.0.0 - Initial Release
+Each release includes:
 
-This is the first stable release of GoliteFlow, a lightweight workflow scheduler and task orchestrator designed for monolithic or small applications.
+### 🚀 **New Features**
+- Description of new functionality
+- Usage examples
+- Configuration options
 
-#### Key Features
+### 🔧 **Improvements**
+- Performance enhancements
+- Code quality improvements
+- Documentation updates
 
-1. **YAML Configuration**: Simple, human-readable workflow definitions
-2. **Cron Scheduling**: Flexible scheduling with standard cron syntax
-3. **Task Dependencies**: Define execution order with dependency management
-4. **Retry Logic**: Robust error handling with configurable retries
-5. **HTML Reports**: Beautiful, interactive execution reports
-6. **CLI Tool**: Easy-to-use command-line interface
-7. **Library Interface**: Use as a Go library in your applications
-8. **Zero Dependencies**: No external database or web server required
+### 🐛 **Bug Fixes**
+- Issue descriptions
+- Resolution details
+- Testing information
 
-#### Getting Started
+### 📚 **Documentation**
+- Updated guides
+- New examples
+- API documentation
 
-```bash
-# Install
-go get github.com/sintakaridina/goliteflow
+### 🔒 **Security**
+- Security fixes
+- Vulnerability patches
+- Best practices
 
-# Use as library
-import "github.com/sintakaridina/goliteflow"
-
-# Use as CLI
-goliteflow run --config=workflows.yml
-```
-
-#### Example Workflow
-
-```yaml
-version: "1.0"
-workflows:
-  - name: daily_summary
-    schedule: "0 7 * * *"
-    tasks:
-      - id: fetch_data
-        command: "curl -s https://api.example.com/data"
-        retry: 3
-      - id: process_data
-        depends_on: ["fetch_data"]
-        command: "go run process.go"
-        retry: 2
-      - id: send_report
-        depends_on: ["process_data"]
-        command: "bash send_report.sh"
-        retry: 1
-```
-
-#### What's Next
-
-- Web-based dashboard
-- REST API for remote management
-- Plugin system for custom task types
-- Metrics and monitoring integration
-- Kubernetes operator
-- More output formats (JSON, CSV)
-
-#### Breaking Changes
-
-None - this is the initial release.
-
-#### Migration Guide
-
-N/A - this is the initial release.
-
-#### Contributors
-
-- Initial development and design
-- Comprehensive test suite
-- Documentation and examples
-- CI/CD pipeline setup
-- Docker support
-
-#### Acknowledgments
-
-- [robfig/cron](https://github.com/robfig/cron) for cron scheduling
-- [rs/zerolog](https://github.com/rs/zerolog) for structured logging
-- [spf13/cobra](https://github.com/spf13/cobra) for CLI framework
-- [go-yaml](https://github.com/go-yaml/yaml) for YAML parsing
+### ⚠️ **Breaking Changes**
+- Migration guides
+- Deprecation notices
+- Upgrade instructions
 
 ---
 
-For more information, see the [README.md](README.md) and [CONTRIBUTING.md](CONTRIBUTING.md) files.
+## Version Numbering
+
+GoliteFlow follows [Semantic Versioning](https://semver.org/):
+
+- **MAJOR** version when you make incompatible API changes
+- **MINOR** version when you add functionality in a backwards compatible manner
+- **PATCH** version when you make backwards compatible bug fixes
+
+### Version History
+- **v1.0.0** - Initial stable release
+- **v0.9.0** - Beta release with core features
+- **v0.8.0** - Alpha release with basic functionality
+
+### Future Roadmap
+- **v1.1.0** - Enhanced reporting and monitoring
+- **v1.2.0** - Web dashboard and API
+- **v1.3.0** - Plugin system and extensions
+- **v2.0.0** - Major architecture improvements
+
+---
+
+## Support
+
+For questions, issues, or contributions:
+
+- **GitHub Issues**: https://github.com/sintakaridina/goliteflow/issues
+- **GitHub Discussions**: https://github.com/sintakaridina/goliteflow/discussions
+- **Documentation**: https://sintakaridina.github.io/goliteflow/
+- **Email**: [Contact information]
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

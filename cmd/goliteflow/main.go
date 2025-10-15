@@ -21,6 +21,7 @@ var (
 	outputFile string
 	verbose    bool
 	daemon     bool
+	version    bool
 )
 
 func main() {
@@ -36,6 +37,13 @@ var rootCmd = &cobra.Command{
 	Long: `GoliteFlow is a lightweight workflow scheduler and task orchestrator 
 designed for monolithic or small applications. It executes tasks/workflows 
 defined in YAML files with retry logic, conditional execution, and monitoring.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		if version {
+			PrintVersion()
+			return
+		}
+		cmd.Help()
+	},
 }
 
 var runCmd = &cobra.Command{
@@ -63,6 +71,7 @@ func init() {
 	// Global flags
 	rootCmd.PersistentFlags().StringVarP(&configFile, "config", "c", "lite-workflows.yml", "Configuration file path")
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Enable verbose logging")
+	rootCmd.Flags().BoolVar(&version, "version", false, "Show version information")
 
 	// Run command flags
 	runCmd.Flags().BoolVarP(&daemon, "daemon", "d", false, "Run as daemon (continuous execution)")

@@ -1,18 +1,11 @@
-# This is an example goreleaser.yaml file with some sane defaults.
-# Make sure to check the documentation at https://goreleaser.com
-before:
-  hooks:
-    # You may remove this if you don't use go modules
-    - go mod tidy
-    # you may remove this if you don't need go generate
-    - go generate ./...
-    # you may remove this if you don't use vgo
-    - go mod download
-    - go mod verify
+# GoReleaser configuration for GoliteFlow
+project_name: goliteflow
 
+# Build configuration
 builds:
-  - env:
-      - CGO_ENABLED=0
+  - id: goliteflow
+    binary: goliteflow
+    main: ./cmd/goliteflow
     goos:
       - linux
       - windows
@@ -20,28 +13,38 @@ builds:
     goarch:
       - amd64
       - arm64
-    main: ./cmd/goliteflow
-    binary: goliteflow
     ldflags:
       - -s -w
-      - -X main.version={{.Version}}
-      - -X main.commit={{.Commit}}
-      - -X main.date={{.Date}}
+      - -X main.Version={{.Version}}
+      - -X main.BuildTime={{.Date}}
+      - -X main.GitCommit={{.Commit}}
+      - -X main.GoVersion={{.Env.GOVERSION}}
+    env:
+      - CGO_ENABLED=0
 
+# Archive configuration
 archives:
-  - format: tar.gz
+  - id: goliteflow
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
     files:
       - README.md
       - LICENSE
-      - examples/*.yml
+      - examples/lite-workflows.yml
+      - docs/
 
+# Checksums
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
+  algorithm: sha256
 
+# Snapshots
 snapshot:
   name_template: "{{ .Tag }}-next"
 
+# Changelog
 changelog:
   sort: asc
   filters:
@@ -49,46 +52,98 @@ changelog:
       - '^docs:'
       - '^test:'
 
-dockers:
-  - image_templates:
-      - "sintakaridina/goliteflow:{{ .Version }}"
-      - "sintakaridina/goliteflow:latest"
-    dockerfile: Dockerfile
-    goos: linux
-    goarch: amd64
-
+# Release configuration
 release:
   github:
     owner: sintakaridina
     name: goliteflow
   draft: false
   prerelease: auto
-  name_template: "{{ .ProjectName }} {{ .Version }}"
-  header: |
-    ## Changelog
-
-    See the [CHANGELOG.md](CHANGELOG.md) file for details.
-
-  footer: |
-    ## Installation
-
-    ### Binary (recommended)
-
-    Download the binary for your platform from the assets below.
-
-    ### Go Install
-
-    ```bash
-    go install github.com/sintakaridina/goliteflow@{{ .Version }}
-    ```
-
-    ### Docker
-
-    ```bash
-    docker pull sintakaridina/goliteflow:{{ .Version }}
-    ```
-
   mode: replace
-  replace_ments:
-    - src: '(\d+\.\d+\.\d+)'
-      repl: '[$1](https://github.com/sintakaridina/goliteflow/releases/tag/v$1)'
+  header: |
+    ## GoliteFlow {{ .Tag }}
+    
+    A lightweight workflow scheduler and task orchestrator for Go applications.
+    
+    ### What's Changed
+  footer: |
+    **Full Changelog**: https://github.com/sintakaridina/goliteflow/compare/{{ .PreviousTag }}...{{ .Tag }}
+
+# Homebrew formula
+brews:
+  - name: goliteflow
+    tap:
+      owner: sintakaridina
+      name: homebrew-tap
+    folder: Formula
+    description: "A lightweight workflow scheduler and task orchestrator"
+    homepage: "https://github.com/sintakaridina/goliteflow"
+    license: "MIT"
+    skip_upload: true
+
+# Scoop manifest
+scoops:
+  - name: goliteflow
+    bucket:
+      owner: sintakaridina
+      name: scoop-bucket
+    description: "A lightweight workflow scheduler and task orchestrator"
+    homepage: "https://github.com/sintakaridina/goliteflow"
+    license: "MIT"
+    skip_upload: true
+
+# Docker images
+dockers:
+  - id: goliteflow
+    image_templates:
+      - "sintakaridina/goliteflow:{{ .Version }}"
+      - "sintakaridina/goliteflow:latest"
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - --label=org.opencontainers.image.title={{ .ProjectName }}
+      - --label=org.opencontainers.image.description={{ .ProjectName }}
+      - --label=org.opencontainers.image.url=https://github.com/sintakaridina/goliteflow
+      - --label=org.opencontainers.image.source=https://github.com/sintakaridina/goliteflow
+      - --label=org.opencontainers.image.version={{ .Version }}
+      - --label=org.opencontainers.image.created={{ .Date }}
+      - --label=org.opencontainers.image.revision={{ .FullCommit }}
+      - --label=org.opencontainers.image.licenses=MIT
+
+# Announcements
+announce:
+  skip: "{{gt .Patch 0}}"
+  twitter:
+    enabled: true
+    message_template: |
+      🚀 GoliteFlow {{ .Tag }} is out! 
+      
+      A lightweight workflow scheduler and task orchestrator for Go applications.
+      
+      {{ .Changelog }}
+      
+      Download: {{ .URL }}
+      
+      #golang #workflow #automation
+  reddit:
+    enabled: true
+    subreddit: golang
+    title_template: "GoliteFlow {{ .Tag }} - Lightweight Workflow Scheduler for Go"
+    message_template: |
+      GoliteFlow {{ .Tag }} is now available!
+      
+      **What's New:**
+      {{ .Changelog }}
+      
+      **Download:** {{ .URL }}
+      
+      GoliteFlow is a lightweight workflow scheduler and task orchestrator designed for monolithic or small applications. It executes tasks/workflows defined in YAML files with retry logic, conditional execution, and monitoring.
+      
+      **Key Features:**
+      - YAML-based configuration
+      - Cron scheduling
+      - Retry logic with exponential backoff
+      - HTML reports
+      - Zero external dependencies
+      - CLI tool and Go library
+      
+      Perfect for data processing pipelines, backup tasks, CI/CD workflows, and more!
