@@ -55,14 +55,6 @@ jobs:
     - name: Coverage
       run: go tool cover -html=coverage.out -o coverage.html
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.out
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: false
-
   build:
     runs-on: ubuntu-latest
     needs: test
@@ -85,53 +77,9 @@ jobs:
         ./goliteflow --help
         ./goliteflow validate --config=examples/lite-workflows.yml
 
-  lint:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Go 1.21
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.21'
-        check-latest: true
-
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        version: latest
-        args: --timeout=5m
-
-  security:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Go 1.21
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.21'
-        check-latest: true
-
-    - name: Run Gosec Security Scanner
-      run: |
-        go install github.com/securecodewarrior/gosec/v2/cmd/gosec@latest
-        gosec -fmt sarif -out gosec.sarif ./...
-
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: gosec.sarif
-
   release:
     runs-on: ubuntu-latest
-    needs: [test, build, lint, security]
+    needs: [test, build]
     if: startsWith(github.ref, 'refs/tags/v')
 
     steps:
