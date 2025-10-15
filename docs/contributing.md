@@ -18,7 +18,7 @@ Thank you for your interest in contributing to GoliteFlow! This document provide
 - [Documentation Guidelines](#documentation-guidelines)
 - [Release Process](#release-process)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -30,6 +30,7 @@ Thank you for your interest in contributing to GoliteFlow! This document provide
 ### Development Setup
 
 1. **Fork the Repository**
+
    ```bash
    # Fork on GitHub, then clone your fork
    git clone https://github.com/YOUR_USERNAME/goliteflow.git
@@ -37,11 +38,13 @@ Thank you for your interest in contributing to GoliteFlow! This document provide
    ```
 
 2. **Add Upstream Remote**
+
    ```bash
    git remote add upstream https://github.com/sintakaridina/goliteflow.git
    ```
 
 3. **Install Dependencies**
+
    ```bash
    go mod tidy
    ```
@@ -52,7 +55,7 @@ Thank you for your interest in contributing to GoliteFlow! This document provide
    go build ./cmd/goliteflow
    ```
 
-## 🔄 Contributing Process
+## Contributing Process
 
 ### 1. Create a Feature Branch
 
@@ -122,6 +125,7 @@ git push origin feature/your-feature-name
 We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
 ### Format
+
 ```
 <type>[optional scope]: <description>
 
@@ -131,6 +135,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 ```
 
 ### Types
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -140,6 +145,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 - `chore`: Maintenance tasks
 
 ### Examples
+
 ```
 feat(parser): add support for custom task timeouts
 
@@ -150,7 +156,7 @@ docs: update README with new examples
 test(scheduler): add tests for cron validation
 ```
 
-## 🧪 Testing Guidelines
+## Testing Guidelines
 
 ### Test Requirements
 
@@ -204,7 +210,7 @@ func TestFunctionName(t *testing.T) {
 - Keep test data minimal and focused
 - Include both valid and invalid test cases
 
-## 📚 Code Style Guidelines
+## Code Style Guidelines
 
 ### Go Code Style
 
@@ -250,6 +256,7 @@ logger.Info("workflow started")
 ### README Updates
 
 When adding new features:
+
 - Update the feature list
 - Add usage examples
 - Update installation instructions if needed
@@ -269,7 +276,7 @@ When adding new features:
 - Include both simple and complex examples
 - Test all examples before submitting
 
-## 🐛 Bug Reports
+## Bug Reports
 
 ### Before Submitting
 
@@ -284,6 +291,7 @@ When adding new features:
 A clear description of the bug.
 
 **Steps to Reproduce**
+
 1. Go to '...'
 2. Run command '...'
 3. See error
@@ -295,6 +303,7 @@ What you expected to happen.
 What actually happened.
 
 **Environment**
+
 - OS: [e.g., Windows 10, macOS 12, Ubuntu 20.04]
 - Go Version: [e.g., 1.19.3]
 - GoliteFlow Version: [e.g., v1.0.0]
@@ -303,7 +312,7 @@ What actually happened.
 Any other relevant information.
 ```
 
-## ✨ Feature Requests
+## Feature Requests
 
 ### Before Submitting
 
@@ -330,7 +339,7 @@ Other solutions you've considered.
 Any other relevant information.
 ```
 
-## 🔍 Code Review Process
+## Code Review Process
 
 ### For Contributors
 
@@ -346,26 +355,30 @@ Any other relevant information.
 3. **Check Style**: Ensure code follows project guidelines
 4. **Approve Promptly**: Don't let PRs sit without review
 
-## 📋 Pull Request Guidelines
+## Pull Request Guidelines
 
 ### PR Template
 
 ```markdown
 ## Description
+
 Brief description of changes.
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Tests pass locally
 - [ ] New tests added for new functionality
 - [ ] Manual testing completed
 
 ## Checklist
+
 - [ ] Code follows project style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
@@ -380,7 +393,7 @@ Brief description of changes.
 - **Documentation**: Update docs for user-facing changes
 - **Breaking Changes**: Clearly document any breaking changes
 
-## 🏷️ Release Process
+## Release Process
 
 ### Version Numbering
 
@@ -399,7 +412,7 @@ We follow [Semantic Versioning](https://semver.org/):
 - [ ] Release notes prepared
 - [ ] GitHub release created
 
-## 🤝 Community Guidelines
+## Community Guidelines
 
 ### Be Respectful
 
@@ -415,20 +428,21 @@ We follow [Semantic Versioning](https://semver.org/):
 - Be patient with newcomers
 - Work together toward common goals
 
-## 📞 Getting Help
+## Getting Help
 
 - **GitHub Issues**: For bugs and feature requests
 - **GitHub Discussions**: For questions and general discussion
 - **Code Review**: Ask questions in PR comments
 
-## 🎉 Recognition
+## Recognition
 
 Contributors will be recognized in:
+
 - CONTRIBUTORS.md file
 - Release notes
 - Project documentation
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Go Documentation](https://golang.org/doc/)
 - [Effective Go](https://golang.org/doc/effective_go.html)

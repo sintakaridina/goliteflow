@@ -10,7 +10,7 @@ author: GoliteFlow Team
 
 # Getting Started (5 Minutes)
 
-Get up and running with GoliteFlow in just **5 minutes**. Works with **any p### **Need Real Examples?\*\*
+Get up and running with GoliteFlow in just **5 minutes**. Works with **any programming language** - Python, Node.js, PHP, Java, Ruby, Go, or shell commands **Need Real Examples?**
 
 1. [Python data pipelines](https://github.com/sintakaridina/goliteflow/tree/main/examples)
 2. [Node.js API monitoring](https://github.com/sintakaridina/goliteflow/tree/main/examples)
@@ -25,7 +25,7 @@ Get up and running with GoliteFlow in just **5 minutes**. Works with **any p### 
     <a href="/goliteflow/configuration" class="btn btn-primary">Advanced Configuration</a>
     <a href="/goliteflow/report-management" class="btn btn-secondary">Report Management</a>
   </div>
-</div>age** - Python, Node.js, PHP, Java, Ruby, Go, or shell commands.
+</div>
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ docker pull sintakaridina/goliteflow:latest
 
 **Done!** You now have GoliteFlow installed. No dependencies, no configuration needed.
 
-## 📝 Step 2: Create Your First Workflow (2 minutes)
+## Step 2: Create Your First Workflow (2 minutes)
 
 Create a file called `hello-world.yml`:
 
@@ -196,7 +196,7 @@ Start **continuous monitoring** with automatic report updates:
 ./goliteflow report-manage cleanup    # Clean up storage
 ```
 
-## � Real-World Examples
+## Real-World Examples
 
 ### Python Data Pipeline
 
@@ -290,7 +290,7 @@ workflows:
         depends_on: ["generate_reports"]
 ```
 
-## 📚 Go Library Integration (Optional)
+## Go Library Integration (Optional)
 
 If you're building a Go application, you can integrate GoliteFlow directly:
 
@@ -312,9 +312,9 @@ func main() {
 
 ```
 
-## ⚙️ Configuration Tips
+## Configuration Tips
 
-### 📅 Schedule Patterns
+### Schedule Patterns
 
 | Pattern       | Description       | Example Use Case            |
 | ------------- | ----------------- | --------------------------- |
@@ -325,7 +325,7 @@ func main() {
 | `0 2 * * *`   | Daily at 2 AM     | ETL jobs, heavy processing  |
 | `0 9 * * 1`   | Mondays at 9 AM   | Weekly reports              |
 
-### 🔗 Task Dependencies
+### Task Dependencies
 
 ```yaml
 # Sequential processing
@@ -350,7 +350,7 @@ tasks:
     command: "python combine_results.py"
 ```
 
-### 🛡️ Error Handling
+### Error Handling
 
 ```yaml
 tasks:
@@ -543,9 +543,9 @@ tasks:
 
 ### � **Need Real Examples?**
 
-1. 🐍 [Python data pipelines](https://github.com/sintakaridina/goliteflow/tree/main/examples)
-2. 🟢 [Node.js API monitoring](https://github.com/sintakaridina/goliteflow/tree/main/examples)
-3. 🔧 [DevOps automation](https://github.com/sintakaridina/goliteflow/tree/main/examples)
+1. [Python data pipelines](https://github.com/sintakaridina/goliteflow/tree/main/examples)
+2. [Node.js API monitoring](https://github.com/sintakaridina/goliteflow/tree/main/examples)
+3. [DevOps automation](https://github.com/sintakaridina/goliteflow/tree/main/examples)
 
 ---
 

@@ -36,7 +36,7 @@ curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/gol
 
 ## ⚙️ Core Commands
 
-### 🏃 `run` - Execute Workflows
+### `run` - Execute Workflows
 
 Run workflows once or continuously with automatic scheduling.
 

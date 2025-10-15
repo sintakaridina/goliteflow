@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GoliteFlow - Language Agnostic Workflow Orchestrator
+title: GoliteFlow
 description: A lightweight workflow scheduler and task orchestrator for ANY programming language. Execute tasks/workflows defined in YAML files with retry logic, conditional execution, enhanced reports, and production-ready monitoring.
 keywords: workflow, scheduler, goliteflow, python, nodejs, php, java, ruby, task orchestrator, cron, yaml, automation, lightweight, monitoring, reports
 author: GoliteFlow Team
