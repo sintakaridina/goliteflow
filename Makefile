@@ -120,6 +120,21 @@ create-release-notes:
 	@echo "- **ARM64**: [goliteflow_$(VERSION)_darwin_arm64.tar.gz](goliteflow_$(VERSION)_darwin_arm64.tar.gz)" >> $(BUILD_DIR)/RELEASE_NOTES.md
 	@echo "✓ Release notes created"
 
+# Build release binaries for README download links
+.PHONY: release-binaries
+release-binaries: clean
+	@echo "Building release binaries for README download links..."
+	@mkdir -p releases
+	@echo "Building goliteflow-linux-amd64..."
+	@GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w" -o releases/goliteflow-linux-amd64 ./cmd/goliteflow
+	@echo "Building goliteflow-windows-amd64.exe..."
+	@GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w" -o releases/goliteflow-windows-amd64.exe ./cmd/goliteflow
+	@echo "Building goliteflow-darwin-arm64..."
+	@GOOS=darwin GOARCH=arm64 CGO_ENABLED=0 go build -ldflags "-s -w" -o releases/goliteflow-darwin-arm64 ./cmd/goliteflow
+	@chmod +x releases/goliteflow-linux-amd64 releases/goliteflow-darwin-arm64
+	@echo "✓ Release binaries created in releases/ directory"
+	@ls -la releases/
+
 # Install to GOPATH/bin
 .PHONY: install
 install: build
