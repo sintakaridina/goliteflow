@@ -1,7 +1,9 @@
 ---
 layout: default
 title: CLI Reference
-description: Complete command-line interface reference for GoliteFlow
+description: Complete command-line interface reference for GoliteFlow. All commands, options, and examples.
+keywords: goliteflow cli, goliteflow commands, goliteflow options, goliteflow reference, golang cli tool
+author: GoliteFlow Team
 ---
 
 # CLI Reference

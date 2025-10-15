@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sintakaridina.github.io/goliteflow/sitemap.xml

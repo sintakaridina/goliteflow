@@ -1,7 +1,9 @@
 ---
 layout: default
 title: GoliteFlow
-description: A lightweight workflow scheduler and task orchestrator for Go applications
+description: A lightweight workflow scheduler and task orchestrator for Go applications. Execute tasks/workflows defined in YAML files with retry logic, conditional execution, and monitoring.
+keywords: golang, workflow, scheduler, goliteflow, open source, go library, task orchestrator, cron, yaml, automation, lightweight
+author: GoliteFlow Team
 ---
 
 <div class="hero">

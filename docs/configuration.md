@@ -1,7 +1,9 @@
 ---
 layout: default
 title: Configuration Reference
-description: Complete YAML configuration reference for GoliteFlow
+description: Complete YAML configuration reference for GoliteFlow. Learn how to configure workflows, tasks, and schedules.
+keywords: goliteflow configuration, goliteflow yaml, goliteflow workflow config, goliteflow tasks, goliteflow schedule
+author: GoliteFlow Team
 ---
 
 # Configuration Reference

@@ -5,7 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="keywords" content="golang, workflow, scheduler, goliteflow, open source, go library, task orchestrator, cron, yaml, automation">
+  <meta name="author" content="GoliteFlow Team">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sintakaridina.github.io/goliteflow/">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:site_name" content="GoliteFlow">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sintakaridina.github.io/goliteflow/">
+  <meta property="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
+  <meta property="twitter:description" content="{{ page.description | default: site.description }}">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://sintakaridina.github.io/goliteflow{{ page.url }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GoliteFlow",
+    "description": "A lightweight workflow scheduler and task orchestrator for Go",
+    "url": "https://sintakaridina.github.io/goliteflow/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, Linux, macOS",
+    "programmingLanguage": "Go",
+    "license": "MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "GoliteFlow Team"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 </head>
 <body>
   <header class="header">

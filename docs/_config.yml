@@ -8,6 +8,10 @@ markdown: kramdown
 highlighter: rouge
 theme: minima
 
+# SEO Settings
+lang: en
+timezone: UTC
+
 # Navigation
 navigation:
   - title: Home

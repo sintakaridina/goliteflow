@@ -1,7 +1,9 @@
 ---
 layout: default
 title: Getting Started
-description: Quick start guide for GoliteFlow
+description: Quick start guide for GoliteFlow. Learn how to install, configure, and run your first workflow in minutes.
+keywords: goliteflow installation, goliteflow setup, goliteflow tutorial, goliteflow quick start, golang workflow setup
+author: GoliteFlow Team
 ---
 
 # Getting Started
