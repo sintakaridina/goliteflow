@@ -12,7 +12,7 @@ var (
 
 // GetVersion returns the version information
 func GetVersion() string {
-	return fmt.Sprintf("GoliteFlow v%s (build: %s, commit: %s, go: %s)", 
+	return fmt.Sprintf("GoliteFlow v%s (build: %s, commit: %s, go: %s)",
 		Version, BuildTime, GitCommit, GoVersion)
 }
 
