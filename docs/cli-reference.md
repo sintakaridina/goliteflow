@@ -6,20 +6,20 @@ keywords: goliteflow cli, goliteflow commands, workflow orchestrator, enhanced r
 author: GoliteFlow Team
 ---
 
-# 🖥️ CLI Reference
+# CLI Reference
 
 Complete command-line interface reference for GoliteFlow. Works with **any programming language** - Python, Node.js, PHP, Java, Ruby, Go, and shell commands.
 
-## 📋 Quick Navigation
+## Quick Navigation
 
-- [🚀 Installation](#installation)
-- [⚙️ Core Commands](#core-commands)
-- [📊 Enhanced Reports](#enhanced-reports)
-- [🛠️ Report Management](#report-management)
-- [💼 Real Examples](#real-examples)
-- [📖 Configuration](#configuration)
+- [Installation](#installation)
+- [Core Commands](#core-commands)
+- [Enhanced Reports](#enhanced-reports)
+- [Report Management](#report-management)
+- [Real Examples](#real-examples)
+- [Configuration](#configuration)
 
-## 🚀 Installation
+## Installation
 
 **Choose your platform:**
 
@@ -79,10 +79,10 @@ Start continuous monitoring with automatic scheduling and report updates.
 
 **Features:**
 
-- ⏰ **Auto Scheduling** - Executes workflows based on cron expressions
-- 📊 **Auto Reports** - Updates HTML reports after each execution
-- 🔄 **Continuous** - Runs 24/7 in background
-- 🛡️ **Resilient** - Automatic restarts on errors
+- **Auto Scheduling** - Executes workflows based on cron expressions
+- **Auto Reports** - Updates HTML reports after each execution
+- **Continuous** - Runs 24/7 in background
+- **Resilient** - Automatic restarts on errors
 
 **Examples:**
 
@@ -94,7 +94,7 @@ Start continuous monitoring with automatic scheduling and report updates.
 ./goliteflow daemon --config=production.yml --verbose
 ```
 
-### ✅ `validate` - Configuration Check
+### `validate` - Configuration Check
 
 Validate YAML configuration before running workflows.
 
@@ -114,9 +114,9 @@ Validate YAML configuration before running workflows.
 ./goliteflow validate --config=my-workflow.yml --verbose
 ```
 
-## 📊 Enhanced Reports
+## Enhanced Reports
 
-### 🎨 `report-enhanced` - Production Dashboard
+### `report-enhanced` - Production Dashboard
 
 Generate **production-ready HTML dashboards** with enterprise features.
 
@@ -128,12 +128,12 @@ Generate **production-ready HTML dashboards** with enterprise features.
 
 **Enterprise Features:**
 
-- 📈 **Real-time Statistics** - Success rates, performance metrics
-- 🔄 **Automatic Rotation** - Limits to recent executions (configurable)
-- 📦 **Monthly Archival** - Historical data organized by month
-- 🧹 **Auto Cleanup** - Configurable retention policies
-- ⚡ **Fast Performance** - Constant loading time regardless of history
-- 📱 **Responsive Design** - Works on desktop and mobile
+- **Real-time Statistics** - Success rates, performance metrics
+- **Automatic Rotation** - Limits to recent executions (configurable)
+- **Monthly Archival** - Historical data organized by month
+- **Auto Cleanup** - Configurable retention policies
+- **Fast Performance** - Constant loading time regardless of history
+- **Responsive Design** - Works on desktop and mobile
 
 **Options:**
 | Option | Description | Default |
@@ -190,11 +190,11 @@ Generate basic HTML report for compatibility.
 ./goliteflow report --output=simple-report.html
 ```
 
-**💡 Recommendation:** Use `report-enhanced` for production deployments.
+**Recommendation:** Use `report-enhanced` for production deployments.
 
-## 🛠️ Report Management
+## Report Management
 
-### 📊 `report-manage stats` - View Statistics
+### `report-manage stats` - View Statistics
 
 Display comprehensive report and execution statistics.
 

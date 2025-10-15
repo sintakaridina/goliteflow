@@ -1,16 +1,33 @@
 ---
 layout: default
 title: Getting Started - 5 Minute Setup
-description: Complete beginner guide for GoliteFlow. Learn how to install, configure, and run workflows for any programming language in 5 minutes.
+description: Complete beginner guide for GoliteFlow. Learn how to install, configure, and run workflows for any progra## Real-World Examples
+
+### Python Data Pipelineng language in 5 minutes.
 keywords: goliteflow installation, goliteflow setup, python workflows, nodejs automation, workflow scheduler, task orchestrator
 author: GoliteFlow Team
 ---
 
-# 🚀 Getting Started (5 Minutes)
+# Getting Started (5 Minutes)
 
-Get up and running with GoliteFlow in just **5 minutes**. Works with **any programming language** - Python, Node.js, PHP, Java, Ruby, Go, or shell commands.
+Get up and running with GoliteFlow in just **5 minutes**. Works with **any p### **Need Real Examples?\*\*
 
-## ✅ Prerequisites
+1. [Python data pipelines](https://github.com/sintakaridina/goliteflow/tree/main/examples)
+2. [Node.js API monitoring](https://github.com/sintakaridina/goliteflow/tree/main/examples)
+3. [DevOps automation](https://github.com/sintakaridina/goliteflow/tree/main/examples)
+
+---
+
+<div class="next-steps-cta">
+  <h3>Congratulations!</h3>
+  <p>You now have GoliteFlow running with enhanced reports and production features.</p>
+  <div class="cta-buttons">
+    <a href="/goliteflow/configuration" class="btn btn-primary">Advanced Configuration</a>
+    <a href="/goliteflow/report-management" class="btn btn-secondary">Report Management</a>
+  </div>
+</div>age** - Python, Node.js, PHP, Java, Ruby, Go, or shell commands.
+
+## Prerequisites
 
 - **Any programming language** (Python, Node.js, PHP, etc.) - Optional
 - **Basic YAML knowledge** - We'll teach you as we go
@@ -18,7 +35,7 @@ Get up and running with GoliteFlow in just **5 minutes**. Works with **any progr
 
 **No Go installation required!** GoliteFlow is distributed as a single binary.
 
-## 📦 Step 1: Download Binary (1 minute)
+## Step 1: Download Binary (1 minute)
 
 Choose your platform and run **one command**:
 
@@ -46,7 +63,7 @@ curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/gol
 docker pull sintakaridina/goliteflow:latest
 ```
 
-**✅ Done!** You now have GoliteFlow installed. No dependencies, no configuration needed.
+**Done!** You now have GoliteFlow installed. No dependencies, no configuration needed.
 
 ## 📝 Step 2: Create Your First Workflow (2 minutes)
 
@@ -70,13 +87,13 @@ workflows:
         depends_on: ["check_system"]
 ```
 
-**💡 Explanation:**
+**Explanation:**
 
 - `@manual` - Run only when triggered manually (great for testing)
 - `depends_on` - Task runs only after specified tasks complete
 - `command` - Any shell command (works with Python, Node.js, etc.)
 
-## ▶️ Step 3: Run Your Workflow (1 minute)
+## Step 3: Run Your Workflow (1 minute)
 
 ### Test Your Configuration
 
@@ -93,11 +110,11 @@ workflows:
 **Expected output:**
 
 ```
-✅ Starting GoliteFlow
-✅ Loaded 1 workflows from hello-world.yml
-✅ Executing workflow: hello_world_demo
-✅ Workflow 'hello_world_demo' completed with status: completed
-✅ Report generated: report.html
+Starting GoliteFlow
+Loaded 1 workflows from hello-world.yml
+Executing workflow: hello_world_demo
+Workflow 'hello_world_demo' completed with status: completed
+Report generated: report.html
 ```
 
 ### Step 4: View the Report
@@ -106,7 +123,7 @@ Open the generated `report.html` file in your browser to see the execution detai
 
 ## CLI Commands
 
-## 📊 Step 4: View Enhanced Reports (1 minute)
+## Step 4: View Enhanced Reports (1 minute)
 
 Generate a **production-ready HTML dashboard**:
 
@@ -120,15 +137,15 @@ xdg-open dashboard.html  # Linux
 start dashboard.html     # Windows
 ```
 
-**🎉 You'll see:**
+**You'll see:**
 
-- ✅ **Beautiful Dashboard** - Modern, responsive design
-- 📊 **Execution Statistics** - Success rates, timing, trends
-- 🔍 **Interactive Timeline** - Click to expand task details
-- 📋 **Task Details** - Individual results, logs, retry attempts
-- 🔄 **Auto Management** - Reports stay fast with archival
+- **Beautiful Dashboard** - Modern, responsive design
+- **Execution Statistics** - Success rates, timing, trends
+- **Interactive Timeline** - Click to expand task details
+- **Task Details** - Individual results, logs, retry attempts
+- **Auto Management** - Reports stay fast with archival
 
-## 🚀 Step 5: Production Mode (1 minute)
+## Step 5: Production Mode (1 minute)
 
 Start **continuous monitoring** with automatic report updates:
 
@@ -144,12 +161,12 @@ Start **continuous monitoring** with automatic report updates:
 
 **Now it runs automatically!**
 
-- ⏰ Executes every 5 minutes
-- 📊 Updates HTML report after each run
-- 🔄 Archives old data automatically
-- 💾 Cleans up storage automatically
+- Executes every 5 minutes
+- Updates HTML report after each run
+- Archives old data automatically
+- Cleans up storage automatically
 
-## 🛠️ Enhanced CLI Commands
+## Enhanced CLI Commands
 
 ### Core Commands
 
@@ -181,7 +198,7 @@ Start **continuous monitoring** with automatic report updates:
 
 ## � Real-World Examples
 
-### 🐍 Python Data Pipeline
+### Python Data Pipeline
 
 Create `python-etl.yml`:
 
@@ -211,7 +228,7 @@ workflows:
         condition: "on_success"
 ```
 
-### 🟢 Node.js API Monitoring
+### Node.js API Monitoring
 
 Create `nodejs-monitoring.yml`:
 
@@ -232,7 +249,7 @@ workflows:
         condition: "on_failure" # Only if health checks fail
 ```
 
-### 🐘 PHP Application Tasks
+### PHP Application Tasks
 
 Create `php-maintenance.yml`:
 
@@ -254,7 +271,7 @@ workflows:
         depends_on: ["optimize_database"]
 ```
 
-### ☕ Java Batch Processing
+### Java Batch Processing
 
 Create `java-batch.yml`:
 
@@ -353,7 +370,7 @@ tasks:
     condition: "on_failure"
 ```
 
-## 🐳 Docker Usage
+## Docker Usage
 
 ### Using Pre-built Image
 
@@ -377,16 +394,16 @@ COPY workflows.yml /app/workflows.yml
 CMD ["run", "--config=/app/workflows.yml", "--daemon"]
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 **1. "command not found" error**
 
 ````bash
-## 🚀 Production Deployment
+## Production Deployment
 
-### 🐧 Linux/macOS (systemd)
+### Linux/macOS (systemd)
 ```bash
 # Create service file: /etc/systemd/system/goliteflow.service
 [Unit]
@@ -408,7 +425,7 @@ sudo systemctl enable goliteflow
 sudo systemctl start goliteflow
 ````
 
-### 🪟 Windows Service
+### Windows Service
 
 ```powershell
 # Install as Windows service
@@ -416,7 +433,7 @@ sudo systemctl start goliteflow
 net start goliteflow
 ```
 
-### 🐳 Docker Production
+### Docker Production
 
 ```bash
 # Create production image
@@ -429,17 +446,17 @@ RUN chmod +x goliteflow
 CMD ["./goliteflow", "daemon", "--config=production.yml"]
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
-### ❌ Common Issues & Solutions
+### Common Issues & Solutions
 
 **Issue: "command not found" error**
 
 ```yaml
-# ❌ Problem: Relative paths
+# Problem: Relative paths
 command: "python script.py"
 
-# ✅ Solution: Full paths
+# Solution: Full paths
 command: "/usr/bin/python3 /full/path/to/script.py"
 working_dir: "/path/to/project"
 which goliteflow
@@ -453,10 +470,10 @@ which goliteflow
 **Issue: Invalid cron expression**
 
 ```bash
-# ❌ Problem: Wrong cron syntax
+# Problem: Wrong cron syntax
 schedule: "0 25 * * *"  # Invalid: 25 is not valid hour
 
-# ✅ Solution: Valid cron expressions
+# Solution: Valid cron expressions
 schedule: "0 2 * * *"   # Daily at 2 AM
 schedule: "*/15 * * * *" # Every 15 minutes
 # Use crontab.guru to validate expressions
@@ -465,21 +482,21 @@ schedule: "*/15 * * * *" # Every 15 minutes
 **Issue: HTML report too slow**
 
 ```bash
-# ❌ Problem: Too many executions in report
+# Problem: Too many executions in report
 ./goliteflow report-enhanced --output=report.html
 
-# ✅ Solution: Limit executions
+# Solution: Limit executions
 ./goliteflow report-enhanced --max-executions=25 --output=report.html
 ```
 
 **Issue: Task fails with "permission denied"**
 
 ```yaml
-# ❌ Problem: Script not executable
+# Problem: Script not executable
 tasks:
   - command: "./script.sh"
 
-# ✅ Solution: Make executable or use interpreter
+# Solution: Make executable or use interpreter
 tasks:
   - command: "chmod +x script.sh && ./script.sh"
   # OR
@@ -489,40 +506,40 @@ tasks:
 **Issue: Python/Node.js not found**
 
 ```yaml
-# ❌ Problem: PATH issues
+# Problem: PATH issues
 tasks:
   - command: "python script.py"
 
-# ✅ Solution: Full paths or set environment
+# Solution: Full paths or set environment
 tasks:
   - command: "/usr/bin/python3 script.py"
   - env:
       PATH: "/usr/local/bin:/usr/bin:/bin"
 ```
 
-### 🆘 Getting Help
+### Getting Help
 
-- 📖 **[Configuration Reference](/goliteflow/configuration)** - Complete YAML guide
-- 🖥️ **[CLI Reference](/goliteflow/cli-reference)** - All commands explained
-- 📊 **[Report Management](/goliteflow/report-management)** - Production scaling
-- 🐛 **[GitHub Issues](https://github.com/sintakaridina/goliteflow/issues)** - Report bugs
-- 💬 **[Discussions](https://github.com/sintakaridina/goliteflow/discussions)** - Ask questions
+- **[Configuration Reference](/goliteflow/configuration)** - Complete YAML guide
+- **[CLI Reference](/goliteflow/cli-reference)** - All commands explained
+- **[Report Management](/goliteflow/report-management)** - Production scaling
+- **[GitHub Issues](https://github.com/sintakaridina/goliteflow/issues)** - Report bugs
+- **[Discussions](https://github.com/sintakaridina/goliteflow/discussions)** - Ask questions
 
-## 🎯 Next Steps
+## Next Steps
 
 **Choose your path:**
 
-### 🚀 **Ready for Production?**
+### **Ready for Production?**
 
-1. ✅ [Deploy as system service](/goliteflow/configuration#production-deployment)
-2. ✅ [Configure report management](/goliteflow/report-management)
-3. ✅ [Set up monitoring and alerts](/goliteflow/configuration#monitoring)
+1. [Deploy as system service](/goliteflow/configuration#production-deployment)
+2. [Configure report management](/goliteflow/report-management)
+3. [Set up monitoring and alerts](/goliteflow/configuration#monitoring)
 
-### 🎨 **Want to Customize?**
+### **Want to Customize?**
 
-1. 🔧 [Advanced YAML configuration](/goliteflow/configuration)
-2. 📊 [Report customization options](/goliteflow/report-management)
-3. 🔌 [Integration with existing apps](/goliteflow/cli-reference)
+1. [Advanced YAML configuration](/goliteflow/configuration)
+2. [Report customization options](/goliteflow/report-management)
+3. [Integration with existing apps](/goliteflow/cli-reference)
 
 ### � **Need Real Examples?**
 
