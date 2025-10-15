@@ -1,5 +1,6 @@
 # Binaries for programs and plugins
 *.exe
+!releases/*.exe  # Allow release binaries
 *.exe~
 *.dll
 *.so
