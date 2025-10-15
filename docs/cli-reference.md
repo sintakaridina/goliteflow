@@ -1,192 +1,309 @@
 ---
 layout: default
-title: CLI Reference
-description: Complete command-line interface reference for GoliteFlow. All commands, options, and examples.
-keywords: goliteflow cli, goliteflow commands, goliteflow options, goliteflow reference, golang cli tool
+title: CLI Reference - Complete Command Guide
+description: Complete command-line interface reference for GoliteFlow. All commands, enhanced reports, production options, and examples for any programming language.
+keywords: goliteflow cli, goliteflow commands, workflow orchestrator, enhanced reports, python automation, nodejs scheduler
 author: GoliteFlow Team
 ---
 
-# CLI Reference
+# 🖥️ CLI Reference
 
-This document provides a complete reference for GoliteFlow's command-line interface.
+Complete command-line interface reference for GoliteFlow. Works with **any programming language** - Python, Node.js, PHP, Java, Ruby, Go, and shell commands.
 
-## 📋 Table of Contents
+## 📋 Quick Navigation
 
-- [Installation](#installation)
-- [Global Options](#global-options)
-- [Commands](#commands)
-- [Examples](#examples)
-- [Exit Codes](#exit-codes)
+- [🚀 Installation](#installation)
+- [⚙️ Core Commands](#core-commands)
+- [📊 Enhanced Reports](#enhanced-reports)
+- [🛠️ Report Management](#report-management)
+- [💼 Real Examples](#real-examples)
+- [📖 Configuration](#configuration)
 
 ## 🚀 Installation
 
-### Go Install
-
-```bash
-go install github.com/sintakaridina/goliteflow@latest
-```
-
-### Download Binary
+**Choose your platform:**
 
 ```bash
 # Linux/macOS
-curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-linux-amd64 -o goliteflow
-chmod +x goliteflow
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-linux-amd64 -o goliteflow && chmod +x goliteflow
 
-# Windows
+# Windows (PowerShell)
 curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-windows-amd64.exe -o goliteflow.exe
+
+# macOS (Apple Silicon)
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-darwin-arm64 -o goliteflow && chmod +x goliteflow
 ```
 
-### Docker
+## ⚙️ Core Commands
+
+### 🏃 `run` - Execute Workflows
+
+Run workflows once or continuously with automatic scheduling.
+
+**Syntax:**
 
 ```bash
-docker pull sintakaridina/goliteflow:latest
+./goliteflow run --config=<file> [options]
 ```
 
-## 🌐 Global Options
+**Options:**
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--config`, `-c` | YAML configuration file | `lite-workflows.yml` |
+| `--verbose`, `-v` | Enable debug logging | `false` |
 
-These options are available for all commands:
-
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--config` | `-c` | Configuration file path | `lite-workflows.yml` |
-| `--verbose` | `-v` | Enable verbose logging | `false` |
-| `--help` | `-h` | Show help information | - |
-
-### Usage
+**Examples:**
 
 ```bash
-goliteflow [global-options] <command> [command-options]
+# Run workflows once (testing)
+./goliteflow run --config=my-workflow.yml
+
+# Run with debug logs
+./goliteflow run --config=my-workflow.yml --verbose
+
+# Works with any language
+./goliteflow run --config=python-etl.yml
+./goliteflow run --config=nodejs-api.yml
+./goliteflow run --config=php-maintenance.yml
 ```
 
-## 📝 Commands
+### � `daemon` - Continuous Mode
 
-### `run` - Execute Workflows
+Start continuous monitoring with automatic scheduling and report updates.
 
-Execute workflows from a configuration file.
-
-#### Syntax
+**Syntax:**
 
 ```bash
-goliteflow run [options]
+./goliteflow daemon --config=<file> [options]
 ```
 
-#### Options
+**Features:**
 
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--daemon` | `-d` | Run as daemon (continuous execution) | `false` |
-| `--output` | `-o` | Output file for HTML report | `report.html` |
+- ⏰ **Auto Scheduling** - Executes workflows based on cron expressions
+- 📊 **Auto Reports** - Updates HTML reports after each execution
+- 🔄 **Continuous** - Runs 24/7 in background
+- 🛡️ **Resilient** - Automatic restarts on errors
 
-#### Examples
+**Examples:**
 
 ```bash
-# Run workflows once
-goliteflow run --config=workflows.yml
+# Start production daemon
+./goliteflow daemon --config=production.yml
 
-# Run as daemon
-goliteflow run --config=workflows.yml --daemon
-
-# Enable verbose logging
-goliteflow run --config=workflows.yml --verbose
-
-# Specify custom output file
-goliteflow run --config=workflows.yml --output=my-report.html
-
-# Run with all options
-goliteflow run --config=workflows.yml --daemon --verbose --output=daemon-report.html
+# Daemon with debug logging
+./goliteflow daemon --config=production.yml --verbose
 ```
 
-#### Behavior
+### ✅ `validate` - Configuration Check
 
-- **One-time execution**: By default, runs all workflows once and exits
-- **Daemon mode**: Continuously runs workflows according to their schedules
-- **Report generation**: Automatically generates HTML report after execution
-- **Signal handling**: Responds to SIGINT/SIGTERM for graceful shutdown
+Validate YAML configuration before running workflows.
 
-### `validate` - Validate Configuration
-
-Validate a workflow configuration file for syntax and structure errors.
-
-#### Syntax
+**Syntax:**
 
 ```bash
-goliteflow validate [options]
+./goliteflow validate --config=<file>
 ```
 
-#### Options
-
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--verbose` | `-v` | Enable verbose output | `false` |
-
-#### Examples
+**Examples:**
 
 ```bash
-# Basic validation
-goliteflow validate --config=workflows.yml
+# Validate configuration
+./goliteflow validate --config=my-workflow.yml
 
-# Verbose validation
-goliteflow validate --config=workflows.yml --verbose
-
-# Validate with custom config
-goliteflow validate --config=my-workflows.yml
+# Validate with verbose output
+./goliteflow validate --config=my-workflow.yml --verbose
 ```
 
-#### Output
+## 📊 Enhanced Reports
 
-**Success:**
-```
-Configuration is valid!
-Found 3 workflows:
-  - daily_backup (schedule: 0 2 * * *, tasks: 2)
-  - hourly_cleanup (schedule: 0 * * * *, tasks: 1)
-  - weekly_report (schedule: 0 9 * * 1, tasks: 3)
-```
+### 🎨 `report-enhanced` - Production Dashboard
 
-**Error:**
-```
-Error: validation failed: workflow[0].task[1]: dependency 'nonexistent_task' not found
-```
+Generate **production-ready HTML dashboards** with enterprise features.
 
-### `report` - Generate HTML Report
-
-Generate an HTML report from execution data.
-
-#### Syntax
+**Syntax:**
 
 ```bash
-goliteflow report [options]
+./goliteflow report-enhanced --output=<file> [options]
 ```
 
-#### Options
+**Enterprise Features:**
 
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--output` | `-o` | Output file for HTML report | `report.html` |
+- 📈 **Real-time Statistics** - Success rates, performance metrics
+- 🔄 **Automatic Rotation** - Limits to recent executions (configurable)
+- 📦 **Monthly Archival** - Historical data organized by month
+- 🧹 **Auto Cleanup** - Configurable retention policies
+- ⚡ **Fast Performance** - Constant loading time regardless of history
+- 📱 **Responsive Design** - Works on desktop and mobile
 
-#### Examples
+**Options:**
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--output`, `-o` | HTML report output file | `report.html` |
+| `--max-executions` | Max executions in main report | `50` |
+| `--archive-after` | Archive reports after N days | `30` |
+| `--cleanup-after` | Delete archives after N days | `90` |
+| `--page-size` | Executions per page | `20` |
+| `--pagination` | Enable pagination | `true` |
+| `--report-dir` | Reports directory | `reports/` |
+| `--archive-dir` | Archive directory | `reports/archive/` |
+
+**Examples:**
 
 ```bash
-# Generate default report
-goliteflow report
+# Generate enhanced report (recommended)
+./goliteflow report-enhanced --output=dashboard.html
 
-# Generate custom report
-goliteflow report --output=my-report.html
+# High-volume production setup
+./goliteflow report-enhanced \
+  --max-executions=25 \
+  --archive-after=7 \
+  --cleanup-after=30 \
+  --output=production-dashboard.html
 
-# Generate with verbose logging
-goliteflow report --output=report.html --verbose
+# Medium-volume setup
+./goliteflow report-enhanced \
+  --max-executions=100 \
+  --page-size=25 \
+  --output=dashboard.html
+
+# Custom directories
+./goliteflow report-enhanced \
+  --report-dir="custom/reports" \
+  --archive-dir="custom/archive" \
+  --output=custom-report.html
 ```
 
-#### Output
+### 📋 `report` - Basic Report (Legacy)
 
-Generates a self-contained HTML file with:
-- Workflow execution statistics
-- Task execution details
-- Error logs and retry information
-- Interactive interface for exploring data
+Generate basic HTML report for compatibility.
 
-## 🔧 Examples
+**Syntax:**
+
+```bash
+./goliteflow report --output=<file>
+```
+
+**Examples:**
+
+```bash
+# Basic report (simple, no management features)
+./goliteflow report --output=simple-report.html
+```
+
+**💡 Recommendation:** Use `report-enhanced` for production deployments.
+
+## 🛠️ Report Management
+
+### 📊 `report-manage stats` - View Statistics
+
+Display comprehensive report and execution statistics.
+
+**Syntax:**
+
+```bash
+./goliteflow report-manage stats [options]
+```
+
+**Options:**
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--report-dir` | Reports directory | `reports/` |
+| `--archive-dir` | Archive directory | `reports/archive/` |
+
+**Examples:**
+
+```bash
+# View statistics
+./goliteflow report-manage stats
+
+# Custom directories
+./goliteflow report-manage stats \
+  --report-dir="custom/reports" \
+  --archive-dir="custom/archive"
+```
+
+**Sample Output:**
+
+```
+📊 GoliteFlow Report Statistics
+================================
+Total Executions: 1,250
+Completed: 1,180
+Failed: 70
+Recent (7 days): 45
+Success Rate: 94.4%
+
+📁 Storage Information
+Report Directory: reports
+Archive Directory: reports/archive
+Archive Size: 125 MB
+```
+
+### 📦 `report-manage archive` - Archive Reports
+
+Manually archive old reports based on age threshold.
+
+**Syntax:**
+
+```bash
+./goliteflow report-manage archive [options]
+```
+
+**Options:**
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--days` | Archive reports older than N days | `30` |
+| `--report-dir` | Reports directory | `reports/` |
+| `--archive-dir` | Archive directory | `reports/archive/` |
+
+**Examples:**
+
+```bash
+# Archive reports older than 30 days (default)
+./goliteflow report-manage archive
+
+# Archive after 15 days
+./goliteflow report-manage archive --days=15
+
+# Custom directories
+./goliteflow report-manage archive \
+  --days=7 \
+  --report-dir="custom/reports" \
+  --archive-dir="custom/archive"
+```
+
+### 🧹 `report-manage cleanup` - Clean Archives
+
+Remove very old archived reports to free disk space.
+
+**Syntax:**
+
+```bash
+./goliteflow report-manage cleanup [options]
+```
+
+**Options:**
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--days` | Delete archives older than N days | `90` |
+| `--archive-dir` | Archive directory | `reports/archive/` |
+
+**Examples:**
+
+```bash
+# Cleanup archives older than 90 days (default)
+./goliteflow report-manage cleanup
+
+# Cleanup after 60 days
+./goliteflow report-manage cleanup --days=60
+
+# Custom archive directory
+./goliteflow report-manage cleanup \
+  --days=30 \
+  --archive-dir="custom/archive"
+```
+
+## 💼 Real Examples
 
 ### Basic Workflow Execution
 
@@ -252,31 +369,77 @@ goliteflow run --config=workflows.yml --verbose
 goliteflow run --config=workflows.yml --output=/var/log/goliteflow/report.html
 ```
 
-## 📊 Exit Codes
+## � Configuration
 
-GoliteFlow uses standard exit codes to indicate success or failure:
+### 🌍 Global Options
 
-| Code | Description |
-|------|-------------|
-| `0` | Success |
-| `1` | General error |
-| `2` | Configuration error |
-| `3` | Execution error |
-| `4` | Validation error |
+Available for all commands:
 
-### Examples
+| Option      | Short | Description             | Default              |
+| ----------- | ----- | ----------------------- | -------------------- |
+| `--config`  | `-c`  | YAML configuration file | `lite-workflows.yml` |
+| `--verbose` | `-v`  | Enable debug logging    | `false`              |
+| `--help`    | `-h`  | Show command help       | -                    |
+
+### 📅 Schedule Patterns
+
+| Expression    | Description           | Use Case           |
+| ------------- | --------------------- | ------------------ |
+| `@manual`     | Manual execution only | Testing, debugging |
+| `@daily`      | Daily at midnight     | Reports, backups   |
+| `@hourly`     | Every hour            | Log rotation       |
+| `*/5 * * * *` | Every 5 minutes       | API monitoring     |
+| `0 2 * * *`   | Daily at 2 AM         | ETL jobs           |
+| `0 9 * * 1`   | Mondays at 9 AM       | Weekly reports     |
+
+### 🔧 Production Tips
+
+**Daemon Management:**
 
 ```bash
-# Check exit code
-goliteflow run --config=workflows.yml
-echo $?  # Should be 0 for success
+# Linux/macOS - Create systemd service
+sudo systemctl enable goliteflow
+sudo systemctl start goliteflow
 
-# Use in scripts
-if goliteflow validate --config=workflows.yml; then
-    echo "Configuration is valid"
-    goliteflow run --config=workflows.yml
+# Windows - Install as service
+.\goliteflow.exe daemon --install --config=production.yml
+
+# Docker - Production container
+docker run -d --name goliteflow \
+  -v $(pwd):/workspace \
+  sintakaridina/goliteflow:latest \
+  daemon --config=/workspace/production.yml
+```
+
+**Report Management:**
+
+```bash
+# Automated maintenance (cron/task scheduler)
+# Daily archival
+0 2 * * * /usr/local/bin/goliteflow report-manage archive
+
+# Weekly cleanup
+0 3 * * 0 /usr/local/bin/goliteflow report-manage cleanup
+```
+
+## 📊 Exit Codes
+
+| Code | Status              | Description                           |
+| ---- | ------------------- | ------------------------------------- |
+| `0`  | ✅ Success          | All operations completed successfully |
+| `1`  | ❌ Error            | General execution error               |
+| `2`  | ⚠️ Config Error     | YAML configuration invalid            |
+| `3`  | 🔧 Workflow Error   | Workflow execution failed             |
+| `4`  | 📝 Validation Error | Pre-execution validation failed       |
+
+**Usage in Scripts:**
+
+```bash
+# Check validation before running
+if ./goliteflow validate --config=production.yml; then
+    ./goliteflow daemon --config=production.yml
 else
-    echo "Configuration has errors"
+    echo "❌ Configuration invalid!"
     exit 1
 fi
 ```
@@ -286,6 +449,7 @@ fi
 ### Common Issues
 
 **1. Command not found**
+
 ```bash
 # Check if goliteflow is in PATH
 which goliteflow
@@ -295,6 +459,7 @@ export PATH=$PATH:/path/to/goliteflow
 ```
 
 **2. Permission denied**
+
 ```bash
 # Make executable (Linux/macOS)
 chmod +x goliteflow
@@ -304,6 +469,7 @@ sudo goliteflow run --config=workflows.yml
 ```
 
 **3. Configuration file not found**
+
 ```bash
 # Check file exists
 ls -la workflows.yml
@@ -313,6 +479,7 @@ goliteflow run --config=/full/path/to/workflows.yml
 ```
 
 **4. Port already in use (daemon mode)**
+
 ```bash
 # Check for existing processes
 ps aux | grep goliteflow
@@ -339,6 +506,7 @@ goliteflow report --output=report.html --verbose
 ### Log Analysis
 
 Check the generated HTML report for:
+
 - Task execution details
 - Error messages and stack traces
 - Retry attempts and timing

@@ -1,5 +1,5 @@
-title: GoliteFlow
-description: A lightweight workflow scheduler and task orchestrator for Go applications
+title: GoliteFlow - Language Agnostic Workflow Orchestrator
+description: Lightweight workflow scheduler and task orchestrator for ANY programming language. Python, Node.js, PHP, Java, Ruby, Go. Zero dependencies, enhanced reports, production ready.
 baseurl: "/goliteflow"
 url: "https://sintakaridina.github.io"
 
@@ -7,27 +7,32 @@ url: "https://sintakaridina.github.io"
 markdown: kramdown
 highlighter: rouge
 theme: minima
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 # SEO Settings
 lang: en
 timezone: UTC
+author: GoliteFlow Team
+keywords: workflow orchestrator, task scheduler, python automation, nodejs scheduler, enhanced reports, production ready
 
 # Navigation
 navigation:
   - title: Home
     url: /
-  - title: Getting Started
+  - title: 🚀 Quick Start
     url: /getting-started
-  - title: Configuration
+  - title: ⚙️ Configuration
     url: /configuration
-  - title: CLI Reference
+  - title: 🖥️ CLI Reference
     url: /cli-reference
-  - title: Library API
-    url: /api
-  - title: Examples
-    url: /examples
-  - title: Deployment
-    url: /deployment
+  - title: 📊 Report Management
+    url: /report-management
+  - title: 💼 Examples
+    url: https://github.com/sintakaridina/goliteflow/tree/main/examples
+  - title: 🤝 Contributing
+    url: /contributing
   - title: Contributing
     url: /contributing
 

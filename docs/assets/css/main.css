@@ -42,10 +42,19 @@ body {
 
 .logo {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   color: #2d3748;
   text-decoration: none;
   letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }
 
 .logo:hover {
@@ -135,27 +144,56 @@ p {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-  border-radius: 12px;
+  padding: 100px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
   margin-bottom: 64px;
+  color: white;
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.1);
 }
 
 .hero h1 {
-  font-size: 56px;
-  font-weight: 200;
-  margin-bottom: 24px;
-  color: #1a202c;
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero .lead {
-  font-size: 20px;
-  color: #4a5568;
-  margin-bottom: 40px;
-  max-width: 600px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 500;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
   font-weight: 400;
+}
+
+.hero-stats {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-stats .stat {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .hero-buttons {
@@ -167,33 +205,39 @@ p {
 
 /* Buttons */
 .btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  background: #3182ce;
-  color: white;
-  border-color: #3182ce;
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .btn-primary:hover {
-  background: #2c5aa0;
-  border-color: #2c5aa0;
-  transform: translateY(-1px);
+  background: white;
+  color: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #3182ce;
-  border-color: #3182ce;
+  color: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
@@ -217,28 +261,40 @@ p {
 .feature-card {
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 32px;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-card:hover {
-  border-color: #3182ce;
-  box-shadow: 0 8px 25px rgba(49, 130, 206, 0.15);
-  transform: translateY(-2px);
+  border-color: transparent;
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+  transform: translateY(-8px);
 }
 
 .feature-icon {
-  width: 48px;
-  height: 48px;
-  background: #f7fafc;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 48px;
   margin-bottom: 24px;
-  color: #3182ce;
+  display: block;
 }
 
 .feature-card h3 {

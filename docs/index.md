@@ -1,198 +1,271 @@
 ---
 layout: default
-title: GoliteFlow
-description: A lightweight workflow scheduler and task orchestrator for Go applications. Execute tasks/workflows defined in YAML files with retry logic, conditional execution, and monitoring.
-keywords: golang, workflow, scheduler, goliteflow, open source, go library, task orchestrator, cron, yaml, automation, lightweight
+title: GoliteFlow - Language Agnostic Workflow Orchestrator
+description: A lightweight workflow scheduler and task orchestrator for ANY programming language. Execute tasks/workflows defined in YAML files with retry logic, conditional execution, enhanced reports, and production-ready monitoring.
+keywords: workflow, scheduler, goliteflow, python, nodejs, php, java, ruby, task orchestrator, cron, yaml, automation, lightweight, monitoring, reports
 author: GoliteFlow Team
 ---
 
 <div class="hero">
-  <h1>GoliteFlow</h1>
-  <p class="lead">A lightweight workflow scheduler and task orchestrator for Go applications</p>
+  <h1>🚀 GoliteFlow</h1>
+  <p class="lead">Lightweight workflow orchestrator for <strong>any programming language</strong></p>
+  <p class="hero-subtitle">Python • Node.js • PHP • Java • Ruby • Go • Shell Commands</p>
   
   <div class="hero-buttons">
-    <a href="/goliteflow/getting-started" class="btn btn-primary">Get Started</a>
-    <a href="https://github.com/sintakaridina/goliteflow" class="btn btn-secondary">View on GitHub</a>
+    <a href="/goliteflow/getting-started" class="btn btn-primary">🏃‍♂️ Quick Start (5 min)</a>
+    <a href="https://github.com/sintakaridina/goliteflow" class="btn btn-secondary">📂 View on GitHub</a>
   </div>
-</div>
+  
+  <div class="hero-stats">
+    <span class="stat"><strong>Zero Dependencies</strong> • Single Binary</span>
+    <span class="stat"><strong>Production Ready</strong> • Enterprise Reports</span>
+    <span class="stat"><strong>Cross Platform</strong> • Linux, Windows, macOS</span>
+  </div>
+</div></div>
 
-## Features
+## ✨ Key Features
 
 <div class="features-grid">
   <div class="feature-card">
-    <div class="feature-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14,2 14,8 20,8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-        <polyline points="10,9 9,9 8,9"></polyline>
-      </svg>
-    </div>
-    <h3>YAML Configuration</h3>
-    <p>Define workflows and tasks in simple, human-readable YAML files with dependency management.</p>
+    <div class="feature-icon">🌍</div>
+    <h3>Language Agnostic</h3>
+    <p>Works with Python, Node.js, PHP, Java, Ruby, Go, or any shell command. No code changes required.</p>
   </div>
   
   <div class="feature-card">
-    <div class="feature-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12,6 12,12 16,14"></polyline>
-      </svg>
-    </div>
-    <h3>Cron Scheduling</h3>
-    <p>Built-in scheduler using standard cron syntax for flexible task scheduling.</p>
+    <div class="feature-icon">📊</div>
+    <h3>Enhanced Reports</h3>
+    <p>Production-ready HTML dashboards with automatic archival, pagination, and enterprise scaling features.</p>
   </div>
   
   <div class="feature-card">
-    <div class="feature-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M1 4v6h6"></path>
-        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
-      </svg>
-    </div>
-    <h3>Retry Logic</h3>
-    <p>Configurable retry mechanisms with exponential backoff for robust task execution.</p>
+    <div class="feature-icon">⏰</div>
+    <h3>Smart Scheduling</h3>
+    <p>Cron-based scheduling with dependency management, retry logic, and conditional execution.</p>
   </div>
   
   <div class="feature-card">
-    <div class="feature-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 3v18h18"></path>
-        <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path>
-      </svg>
-    </div>
-    <h3>HTML Reports</h3>
-    <p>Beautiful, interactive HTML reports with execution history and detailed task logs.</p>
+    <div class="feature-icon">🚀</div>
+    <h3>Zero Dependencies</h3>
+    <p>Single binary deployment. No databases, web servers, or complex setup required.</p>
   </div>
   
   <div class="feature-card">
-    <div class="feature-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-        <line x1="8" y1="21" x2="16" y2="21"></line>
-        <line x1="12" y1="17" x2="12" y2="21"></line>
-      </svg>
-    </div>
-    <h3>CLI Tool</h3>
-    <p>Easy-to-use command-line interface for running and managing workflows.</p>
+    <div class="feature-icon">🔄</div>
+    <h3>Daemon Mode</h3>
+    <p>Continuous monitoring with automatic HTML report updates after each execution.</p>
   </div>
   
   <div class="feature-card">
-    <div class="feature-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-      </svg>
-    </div>
-    <h3>Go Library</h3>
-    <p>Use as a Go library in your applications with a clean, simple API.</p>
+    <div class="feature-icon">🛠️</div>
+    <h3>Production Ready</h3>
+    <p>Report management, archival, cleanup, and enterprise features for long-running deployments.</p>
   </div>
 </div>
 
-## Quick Start
+## 🚀 Quick Start (5 Minutes)
 
-### Installation
+### Step 1: Download Binary
+
+Choose your platform:
 
 ```bash
-# Install via Go
-go get github.com/sintakaridina/goliteflow
+# Linux/macOS
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-linux-amd64 -o goliteflow
+chmod +x goliteflow
 
-# Or download binary from releases
+# Windows (PowerShell)
 curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-windows-amd64.exe -o goliteflow.exe
+
+# macOS (Apple Silicon)
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-darwin-arm64 -o goliteflow
+chmod +x goliteflow
 ```
 
-### Basic Usage
+### Step 2: Create Your First Workflow
 
-1. **Create a workflow file** (`workflows.yml`):
+Create `my-workflow.yml`:
 
 ```yaml
 version: "1.0"
 workflows:
-  - name: daily_backup
-    schedule: "0 2 * * *"  # Daily at 2 AM
+  - name: hello_world_demo
+    schedule: "@manual" # Run manually for testing
     tasks:
-      - id: backup_data
-        command: "tar -czf backup.tar.gz /data"
-        retry: 3
-      - id: upload_backup
-        depends_on: ["backup_data"]
-        command: "aws s3 cp backup.tar.gz s3://my-bucket/"
-        retry: 2
+      - id: greet
+        command: "echo Hello from GoliteFlow!"
+
+      - id: check_system
+        command: "python --version && node --version"
+        depends_on: ["greet"]
+
+      - id: list_files
+        command: "ls -la" # or "dir" on Windows
+        depends_on: ["check_system"]
 ```
 
-2. **Run the workflow**:
+### Step 3: Run & Monitor
 
 ```bash
-# Validate configuration
-goliteflow validate --config=workflows.yml
+# Run the workflow
+./goliteflow run --config=my-workflow.yml
 
-# Run once
-goliteflow run --config=workflows.yml
+# Generate enhanced HTML report
+./goliteflow report-enhanced --output=dashboard.html
 
-# Run as daemon
-goliteflow run --config=workflows.yml --daemon
-
-# Generate report
-goliteflow report --output=report.html
+# Start continuous daemon (production)
+./goliteflow daemon --config=my-workflow.yml
 ```
 
-3. **Use as Go library**:
+### Real-World Examples
 
-```go
-package main
+**Python Data Pipeline:**
 
-import "github.com/sintakaridina/goliteflow"
-
-func main() {
-    // Simple usage
-    goliteflow.Run("workflows.yml")
-    
-    // With report generation
-    goliteflow.RunWithReport("workflows.yml", "report.html")
-}
+```yaml
+version: "1.0"
+workflows:
+  - name: daily_etl
+    schedule: "0 2 * * *" # Every day at 2 AM
+    tasks:
+      - id: extract_data
+        command: "python scripts/extract_from_api.py"
+        retry_count: 3
+      - id: process_data
+        command: "python scripts/transform_data.py"
+        depends_on: ["extract_data"]
+      - id: send_report
+        command: "python scripts/email_summary.py"
+        depends_on: ["process_data"]
 ```
 
-## Why GoliteFlow?
+**Node.js API Monitoring:**
+
+```yaml
+version: "1.0"
+workflows:
+  - name: api_health_check
+    schedule: "*/5 * * * *" # Every 5 minutes
+    tasks:
+      - id: health_check
+        command: "node monitoring/health-check.js"
+      - id: alert_on_failure
+        command: "node monitoring/send-alert.js"
+        condition: "on_failure"
+```
+
+## 🎯 Why Choose GoliteFlow?
 
 <div class="comparison">
   <div class="pros">
-    <h3>Advantages</h3>
+    <h3>✅ Key Advantages</h3>
     <ul>
-      <li><strong>Zero Dependencies</strong> - No external database or web server required</li>
-      <li><strong>Lightweight</strong> - Minimal resource usage, perfect for small applications</li>
-      <li><strong>Simple</strong> - Easy YAML configuration, no complex setup</li>
-      <li><strong>Self-contained</strong> - HTML reports with embedded CSS/JS</li>
-      <li><strong>Fast</strong> - Efficient execution with goroutines</li>
-      <li><strong>Reliable</strong> - Built-in retry logic and error handling</li>
+      <li><strong>🌍 Any Language</strong> - Python, Node.js, PHP, Java, Ruby, Go, shell commands</li>
+      <li><strong>📦 Zero Setup</strong> - Single binary, no databases or web servers</li>
+      <li><strong>⚡ Lightning Fast</strong> - 5-minute setup from zero to production</li>
+      <li><strong>📊 Enterprise Reports</strong> - Automatic archival and scaling</li>
+      <li><strong>🔒 Production Ready</strong> - Built-in reliability and monitoring</li>
+      <li><strong>🛠️ Developer Friendly</strong> - YAML config, clear documentation</li>
     </ul>
   </div>
   
   <div class="use-cases">
-    <h3>Perfect For</h3>
+    <h3>🎨 Perfect Use Cases</h3>
     <ul>
-      <li>Data processing pipelines</li>
-      <li>Backup and maintenance tasks</li>
-      <li>CI/CD workflows</li>
-      <li>Monitoring and alerting</li>
-      <li>File processing and ETL</li>
-      <li>API integrations</li>
+      <li>🐍 Python data processing & ML pipelines</li>
+      <li>🟢 Node.js API monitoring & automation</li>
+      <li>🐘 PHP application maintenance tasks</li>
+      <li>☕ Java batch processing & reports</li>
+      <li>💎 Ruby deployment & backup scripts</li>
+      <li>🔧 DevOps automation & CI/CD</li>
+      <li>📈 ETL pipelines & data workflows</li>
+      <li>🚨 Health checks & alerting systems</li>
     </ul>
   </div>
 </div>
 
-## Example Report
+## 📊 vs Other Solutions
 
-GoliteFlow generates beautiful HTML reports with:
+| Feature               | GoliteFlow   | Airflow           | Prefect     | Temporal          |
+| --------------------- | ------------ | ----------------- | ----------- | ----------------- |
+| **Setup Time**        | ⚡ 5 minutes | 🕒 Hours          | 🕐 30+ min  | 🕒 Hours          |
+| **Language Support**  | 🌍 Any       | 🐍 Python         | 🐍 Python   | 📦 SDK Required   |
+| **Dependencies**      | ✅ None      | 🗄️ Database + Web | 🗄️ Database | 🗄️ Database + Web |
+| **Resource Usage**    | 🪶 Minimal   | 🏗️ Heavy          | 🏢 Medium   | 🏗️ Heavy          |
+| **HTML Reports**      | 📊 Built-in  | ❌ External       | ❌ External | ❌ External       |
+| **Beginner Friendly** | ✅ Very Easy | ❌ Complex        | 🟡 Medium   | ❌ Complex        |
 
-- **Workflow Statistics**: Success rates, execution times
-- **Task Details**: Individual task results, retry counts
-- **Interactive Interface**: Expandable sections, search functionality
-- **Error Logs**: Detailed stdout/stderr capture
-- **Timeline View**: Execution history with timestamps
+## 📊 Enhanced HTML Reports
 
-[View Sample Report](examples/sample-report.html)
+GoliteFlow generates **production-ready HTML dashboards** with enterprise features:
 
-## Production Ready
+### 🎨 Dashboard Features
+
+- **📈 Real-time Statistics** - Success rates, execution trends, performance metrics
+- **🔍 Interactive Timeline** - Visual workflow execution history
+- **📋 Task Details** - Individual results, retry attempts, error logs
+- **🎯 Dependency Graph** - Visual task dependency mapping
+- **📱 Responsive Design** - Works on desktop and mobile
+
+### 🚀 Enterprise Management
+
+- **🔄 Automatic Rotation** - Limits main report to recent executions
+- **📦 Monthly Archival** - Historical data organized by month
+- **🧹 Auto Cleanup** - Configurable retention policies
+- **⚡ Fast Loading** - Constant performance regardless of history size
+- **📊 Analytics Dashboard** - Comprehensive workflow analytics
+
+### 🛠️ Report Commands
+
+```bash
+# Generate enhanced report (recommended)
+./goliteflow report-enhanced --output=dashboard.html
+
+# Configure report management
+./goliteflow report-enhanced --max-executions=100 --archive-after=30
+
+# Manage archives
+./goliteflow report-manage stats      # View statistics
+./goliteflow report-manage cleanup    # Clean old archives
+```
+
+[📸 View Live Demo Report →](https://sintakaridina.github.io/goliteflow/examples/complete-report.html)
+
+## 🚀 Production Deployment
+
+<div class="deployment-options">
+  <div class="deployment-card">
+    <h3>🐧 Linux/macOS (systemd)</h3>
+    <pre><code># Install as system service
+sudo systemctl enable goliteflow
+sudo systemctl start goliteflow
+    </code></pre>
+  </div>
+  
+  <div class="deployment-card">
+    <h3>🪟 Windows Service</h3>
+    <pre><code># Install as Windows service
+.\goliteflow.exe daemon --install --config=production.yml
+net start goliteflow
+    </code></pre>
+  </div>
+  
+  <div class="deployment-card">
+    <h3>🐳 Docker Container</h3>
+    <pre><code># Run in container
+docker run -v $(pwd):/workflows \
+  sintakaridina/goliteflow:latest \
+  daemon --config=/workflows/config.yml
+    </code></pre>
+  </div>
+</div>
+
+### 📊 Monitoring & Scaling
+
+- **📈 Real-time Dashboard** - Live HTML reports with auto-refresh
+- **🔄 Report Rotation** - Automatic archival prevents size growth
+- **📦 Archive Management** - Monthly organization with configurable cleanup
+- **🚨 Health Monitoring** - Built-in status checks and alerting
+- **⚡ Performance** - Handles thousands of executions efficiently
 
 <div class="badges">
   <img src="https://img.shields.io/badge/Go-1.19%2B-blue" alt="Go Version">
@@ -200,13 +273,6 @@ GoliteFlow generates beautiful HTML reports with:
   <img src="https://img.shields.io/badge/Status-Production%20Ready-brightgreen" alt="Status">
   <img src="https://img.shields.io/github/stars/sintakaridina/goliteflow?style=social" alt="GitHub Stars">
 </div>
-
-- **Comprehensive Testing** - Full test coverage
-- **Error Handling** - Robust error handling and validation
-- **Documentation** - Complete documentation and examples
-- **CI/CD** - Automated testing and building
-- **Docker Support** - Container-ready
-- **Cross-platform** - Windows, Linux, macOS support
 
 ## Community
 
@@ -227,19 +293,54 @@ GoliteFlow generates beautiful HTML reports with:
   </div>
 </div>
 
-## Documentation
+## 📖 Documentation
 
-- [Getting Started](/getting-started) - Quick setup guide
-- [Configuration Reference](/configuration) - YAML configuration details
-- [CLI Reference](/cli-reference) - Command-line interface
-- [Library API](/api) - Go library documentation
-- [Examples](/examples) - Real-world use cases
-- [Deployment Guide](/deployment) - Production deployment
+<div class="docs-grid">
+  <div class="doc-card">
+    <h4>🏃‍♂️ <a href="/goliteflow/getting-started">Getting Started</a></h4>
+    <p>5-minute setup guide for beginners</p>
+  </div>
+  
+  <div class="doc-card">
+    <h4>⚙️ <a href="/goliteflow/configuration">Configuration Reference</a></h4>
+    <p>Complete YAML configuration options</p>
+  </div>
+  
+  <div class="doc-card">
+    <h4>🖥️ <a href="/goliteflow/cli-reference">CLI Reference</a></h4>
+    <p>All command-line options and examples</p>
+  </div>
+  
+  <div class="doc-card">
+    <h4>📊 <a href="/goliteflow/report-management">Report Management</a></h4>
+    <p>Enterprise report features and scaling</p>
+  </div>
+  
+  <div class="doc-card">
+    <h4>💼 <a href="https://github.com/sintakaridina/goliteflow/tree/main/examples">Real Examples</a></h4>
+    <p>Python, Node.js, DevOps workflows</p>
+  </div>
+  
+  <div class="doc-card">
+    <h4>🤝 <a href="/goliteflow/contributing">Contributing</a></h4>
+    <p>Help improve GoliteFlow</p>
+  </div>
+</div>
 
 ---
 
 <div class="footer-cta">
-  <h3>Ready to get started?</h3>
-  <p>GoliteFlow makes workflow orchestration simple and reliable.</p>
-  <a href="/getting-started" class="btn btn-primary btn-large">Start Building</a>
+  <h2>🎉 Ready to Automate Your Workflows?</h2>
+  <p>Join developers using GoliteFlow for Python, Node.js, PHP, and more!</p>
+  <div class="cta-buttons">
+    <a href="/goliteflow/getting-started" class="btn btn-primary btn-large">🚀 Start in 5 Minutes</a>
+    <a href="https://github.com/sintakaridina/goliteflow/releases" class="btn btn-secondary btn-large">📦 Download Binary</a>
+  </div>
+  
+  <div class="stats-footer">
+    <span>⭐ Zero Dependencies</span>
+    <span>🌍 Any Language</span>
+    <span>📊 Enhanced Reports</span>
+    <span>🚀 Production Ready</span>
+  </div>
 </div>
