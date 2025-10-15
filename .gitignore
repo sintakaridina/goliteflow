@@ -6,7 +6,7 @@
 *.dylib
 goliteflow
 goliteflow-test
-goliteflow-*
+# goliteflow-*  # Commented out to allow release binaries
 
 # Test binary, built with `go test -c`
 *.test
