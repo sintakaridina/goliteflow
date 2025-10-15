@@ -1,0 +1,60 @@
+title: GoliteFlow
+description: A lightweight workflow scheduler and task orchestrator for Go applications
+baseurl: "/goliteflow"
+url: "https://sintakaridina.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Getting Started
+    url: /getting-started
+  - title: Configuration
+    url: /configuration
+  - title: CLI Reference
+    url: /cli-reference
+  - title: Library API
+    url: /api
+  - title: Examples
+    url: /examples
+  - title: Deployment
+    url: /deployment
+  - title: Contributing
+    url: /contributing
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO
+author: sintakaridina
+twitter:
+  username: sintakaridina
+github:
+  username: sintakaridina
+
+# Social links
+social:
+  - name: GitHub
+    icon: github
+    link: https://github.com/sintakaridina/goliteflow
+  - name: Twitter
+    icon: twitter
+    link: https://twitter.com/sintakaridina
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
