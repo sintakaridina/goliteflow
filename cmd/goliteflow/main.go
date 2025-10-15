@@ -42,7 +42,9 @@ defined in YAML files with retry logic, conditional execution, and monitoring.`,
 			PrintVersion()
 			return
 		}
-		cmd.Help()
+		if err := cmd.Help(); err != nil {
+			fmt.Fprintf(os.Stderr, "Error showing help: %v\n", err)
+		}
 	},
 }
 
