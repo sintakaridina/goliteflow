@@ -45,9 +45,6 @@ social:
   - name: GitHub
     icon: github
     link: https://github.com/sintakaridina/goliteflow
-  - name: Twitter
-    icon: twitter
-    link: https://twitter.com/sintakaridina
 
 # Exclude from processing
 exclude:

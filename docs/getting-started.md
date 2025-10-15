@@ -8,13 +8,13 @@ description: Quick start guide for GoliteFlow
 
 This guide will help you get up and running with GoliteFlow in just a few minutes.
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Go 1.19+** (for library usage)
 - **Basic knowledge** of YAML and command-line tools
 - **Git** (for installation)
 
-## 🚀 Installation
+## Installation
 
 ### Option 1: Go Install (Recommended)
 
