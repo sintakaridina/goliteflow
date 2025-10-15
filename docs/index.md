@@ -9,7 +9,7 @@ description: A lightweight workflow scheduler and task orchestrator for Go appli
   <p class="lead">A lightweight workflow scheduler and task orchestrator for Go applications</p>
   
   <div class="hero-buttons">
-    <a href="/getting-started" class="btn btn-primary">Get Started</a>
+    <a href="/goliteflow/getting-started" class="btn btn-primary">Get Started</a>
     <a href="https://github.com/sintakaridina/goliteflow" class="btn btn-secondary">View on GitHub</a>
   </div>
 </div>
