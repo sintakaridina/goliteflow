@@ -1,0 +1,8 @@
+version: "1.0"
+workflows:
+  - name: invalid_test
+    schedule: "invalid cron expression"
+    tasks:
+      - id: task1
+        command: "echo 'This should fail validation'"
+        retry: -1  # Invalid retry count

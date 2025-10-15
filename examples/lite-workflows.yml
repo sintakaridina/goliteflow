@@ -1,0 +1,50 @@
+version: "1.0"
+workflows:
+  - name: daily_summary
+    schedule: "0 7 * * *"  # Run daily at 7:00 AM
+    tasks:
+      - id: fetch_data
+        command: "curl -s https://httpbin.org/json"
+        retry: 3
+        timeout: "30s"
+      - id: process_data
+        depends_on: ["fetch_data"]
+        command: "echo 'Processing data...'"
+        retry: 2
+        timeout: "10s"
+      - id: send_report
+        depends_on: ["process_data"]
+        command: "echo 'Report sent successfully'"
+        retry: 1
+        timeout: "5s"
+
+  - name: hourly_cleanup
+    schedule: "0 * * * *"  # Run every hour
+    tasks:
+      - id: cleanup_temp_files
+        command: "echo 'Cleaning up temporary files...'"
+        retry: 1
+        timeout: "30s"
+      - id: log_cleanup_status
+        depends_on: ["cleanup_temp_files"]
+        command: "echo 'Cleanup completed at $(date)'"
+        retry: 1
+        timeout: "5s"
+
+  - name: weekly_backup
+    schedule: "0 2 * * 0"  # Run every Sunday at 2:00 AM
+    tasks:
+      - id: create_backup
+        command: "echo 'Creating backup...'"
+        retry: 2
+        timeout: "300s"
+      - id: verify_backup
+        depends_on: ["create_backup"]
+        command: "echo 'Verifying backup integrity...'"
+        retry: 1
+        timeout: "60s"
+      - id: upload_backup
+        depends_on: ["verify_backup"]
+        command: "echo 'Uploading backup to remote storage...'"
+        retry: 3
+        timeout: "600s"

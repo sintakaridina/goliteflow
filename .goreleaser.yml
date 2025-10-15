@@ -1,0 +1,94 @@
+# This is an example goreleaser.yaml file with some sane defaults.
+# Make sure to check the documentation at https://goreleaser.com
+before:
+  hooks:
+    # You may remove this if you don't use go modules
+    - go mod tidy
+    # you may remove this if you don't need go generate
+    - go generate ./...
+    # you may remove this if you don't use vgo
+    - go mod download
+    - go mod verify
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/goliteflow
+    binary: goliteflow
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+      - LICENSE
+      - examples/*.yml
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ .Tag }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+dockers:
+  - image_templates:
+      - "sintakaridina/goliteflow:{{ .Version }}"
+      - "sintakaridina/goliteflow:latest"
+    dockerfile: Dockerfile
+    goos: linux
+    goarch: amd64
+
+release:
+  github:
+    owner: sintakaridina
+    name: goliteflow
+  draft: false
+  prerelease: auto
+  name_template: "{{ .ProjectName }} {{ .Version }}"
+  header: |
+    ## Changelog
+
+    See the [CHANGELOG.md](CHANGELOG.md) file for details.
+
+  footer: |
+    ## Installation
+
+    ### Binary (recommended)
+
+    Download the binary for your platform from the assets below.
+
+    ### Go Install
+
+    ```bash
+    go install github.com/sintakaridina/goliteflow@{{ .Version }}
+    ```
+
+    ### Docker
+
+    ```bash
+    docker pull sintakaridina/goliteflow:{{ .Version }}
+    ```
+
+  mode: replace
+  replace_ments:
+    - src: '(\d+\.\d+\.\d+)'
+      repl: '[$1](https://github.com/sintakaridina/goliteflow/releases/tag/v$1)'
