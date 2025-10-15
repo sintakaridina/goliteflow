@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Nothing yet
+- SEO optimazion tag and google crawler verification
 
 ### Changed
 - Nothing yet
@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Nothing yet
 
-## [1.0.0] - 2024-10-15
+## [1.0.0] - 2025-10-15
 
 ### Added
 - **Initial Release** - First stable release of GoliteFlow
@@ -99,44 +99,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Issues**: Bug reports and feature requests
 - **Discussions**: Community discussions and Q&A
 - **MIT License**: Open source with permissive license
-
-## [0.9.0] - 2024-10-14
-
-### Added
-- **Beta Release** - Pre-release version for testing
-- **Core Functionality** - Basic workflow execution
-- **YAML Parser** - Configuration file parsing
-- **Task Executor** - Command execution with retry logic
-- **Scheduler** - Cron-based task scheduling
-- **HTML Reporter** - Basic HTML report generation
-- **CLI Interface** - Command-line tool implementation
-
-### Changed
-- **Architecture Refactoring** - Improved modular design
-- **Error Handling** - Enhanced error messages and validation
-- **Logging** - Structured logging with zerolog
-
-### Fixed
-- **Memory Leaks** - Fixed goroutine leaks in scheduler
-- **Race Conditions** - Fixed concurrent access issues
-- **Configuration Validation** - Improved YAML validation
-
-## [0.8.0] - 2024-10-13
-
-### Added
-- **Initial Implementation** - First working version
-- **Basic Workflow Engine** - Core workflow execution logic
-- **YAML Configuration** - Simple configuration format
-- **Command Execution** - Basic task execution
-- **Retry Logic** - Simple retry mechanism
-
-### Changed
-- **Project Structure** - Organized codebase structure
-- **Dependencies** - Added required Go modules
-
-### Fixed
-- **Build Issues** - Resolved compilation errors
-- **Import Paths** - Fixed module import issues
 
 ---
 
