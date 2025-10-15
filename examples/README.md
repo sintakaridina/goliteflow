@@ -51,8 +51,8 @@ cd examples/
 # 2. Run the file processing workflow
 goliteflow run --config=file-processing-workflow.yml
 
-# 3. Generate HTML report
-goliteflow report --output=processing_report.html
+# 3. Generate enhanced HTML report with management features
+goliteflow report-enhanced --output=processing_report.html
 
 # 4. View results
 open processing_report.html  # macOS
@@ -198,15 +198,31 @@ Configure scripts with environment variables:
 
 ## 📈 Viewing Results
 
-### HTML Reports
+### Enhanced HTML Reports
 
-GoliteFlow generates beautiful HTML reports showing:
+GoliteFlow generates beautiful enhanced HTML reports with enterprise features:
 
-- ✅ Task execution timeline
-- ✅ Success/failure status
-- ✅ Execution logs and output
-- ✅ Performance metrics
-- ✅ Retry attempts and errors
+**📊 Core Features:**
+
+- ✅ Task execution timeline and status
+- ✅ Success/failure metrics with percentages
+- ✅ Performance analytics and trends
+- ✅ Workflow summaries and statistics
+
+**🚀 Management Features:**
+
+- ✅ Automatic report rotation (limits to 50 recent executions)
+- ✅ Monthly archival for historical data
+- ✅ Configurable cleanup policies
+- ✅ Responsive design with pagination
+- ✅ Production-ready scaling
+
+**📈 Analytics Dashboard:**
+
+- ✅ Success rate calculations
+- ✅ Execution trends over time
+- ✅ Workflow performance comparison
+- ✅ Resource usage insights
 
 ### Log Files
 
@@ -243,8 +259,14 @@ goliteflow validate --config=backup-cleanup-workflow.yml
 ### Custom Report Output
 
 ```bash
-# Generate report with custom filename
-goliteflow report --output=my_custom_report.html
+# Generate enhanced report with custom configuration
+goliteflow report-enhanced \
+  --output=my_custom_report.html \
+  --max-executions=25 \
+  --archive-after=7
+
+# Basic report (for compatibility)
+goliteflow report --output=simple_report.html
 ```
 
 ## 🔍 Troubleshooting
@@ -281,7 +303,51 @@ Add verbose logging to see detailed execution:
 goliteflow run --config=workflow.yml --verbose
 ```
 
-## 💡 Next Steps
+## � Enhanced Report Management
+
+For production deployments, use report management features:
+
+```bash
+# Generate enhanced report (recommended)
+goliteflow report-enhanced --output=report.html
+
+# View statistics
+goliteflow report-manage stats
+
+# Archive old reports
+goliteflow report-manage archive --days=30
+
+# Cleanup archived reports
+goliteflow report-manage cleanup --days=90
+```
+
+### Production Configuration
+
+```bash
+# High-volume production setup
+goliteflow report-enhanced \
+  --max-executions=25 \
+  --archive-after=7 \
+  --cleanup-after=30 \
+  --page-size=10
+
+# Medium-volume setup
+goliteflow report-enhanced \
+  --max-executions=50 \
+  --archive-after=30 \
+  --cleanup-after=90
+```
+
+**Benefits:**
+
+- ✅ Reports stay fast regardless of execution history
+- ✅ Automatic data archival prevents file size issues
+- ✅ Configurable retention policies
+- ✅ Production-ready scaling
+
+📖 **Complete Guide**: See [Report Management Documentation](../docs/report-management.md)
+
+## �💡 Next Steps
 
 1. **Start with file processing** - Easy to understand and see results
 2. **Try API monitoring** - See real-time monitoring in action

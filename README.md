@@ -5,126 +5,33 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sintakaridina/goliteflow)](https://goreportcard.com/report/github.com/sintakaridina/goliteflow)
 [![GitHub Downloads](https://img.shields.io/github/downloads/sintakaridina/goliteflow/total.svg)](https://github.com/sintakaridina/goliteflow/releases)
-[![GitHub Stars](https://img.shields.io/github/stars/sintakaridina/goliteflow?style=social)](https://github.com/sintakaridina/goliteflow/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/sintakaridina/goliteflow?style=social)](https://github.com/sintakaridina/goliteflow/network)
 
-A lightweight workflow scheduler and task orchestrator designed for monolithic or small applications. GoliteFlow executes tasks/workflows defined in YAML files with retry logic, conditional execution, monitoring, and cron-based scheduling.
+A lightweight workflow scheduler and task orchestrator designed for **any programming language**. GoliteFlow executes tasks/workflows defined in YAML files with retry logic, conditional execution, monitoring, and cron-based scheduling.
 
-## Screenshots
+**🎯 Perfect for:** Python, Node.js, PHP, Java, Ruby, Go, or any application that needs scheduled tasks and monitoring.
 
-### HTML Report Dashboard
+## ✨ Features
 
-![HTML Report](docs/screenshots/html-report.jpg)
-_Beautiful HTML reports with execution history, task details, and interactive interface_
+- **🌍 Language Agnostic** - Works with any programming language or shell command
+- **📅 Cron Scheduling** - Built-in scheduler with cron expressions
+- **🔄 Dependency Management** - Tasks can depend on other tasks
+- **🔁 Retry Logic** - Automatic retries with configurable backoff
+- **📊 Beautiful HTML Reports** - Real-time dashboard with execution history
+- **🚀 Lightweight** - Single binary, no external dependencies
+- **🛠️ Production Ready** - Report archival, cleanup, and enterprise features
 
-### CLI Usage
+## 🚀 Quick Start (5 Minutes)
 
-![CLI Usage](docs/screenshots/cli-usage.png)
-_Easy-to-use command-line interface for workflow management_
+### Step 1: Download Binary
 
-## Quick Start (5 Minutes)
-
-### 1. Installation
-
-```bash
-# Install via Go
-go get github.com/sintakaridina/goliteflow
-
-# Or download binary
-curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-linux-amd64 -o goliteflow
-chmod +x goliteflow
-```
-
-### 2. Create Your First Workflow
-
-Create `workflows.yml`:
-
-```yaml
-version: "1.0"
-workflows:
-  - name: daily_backup
-    schedule: "0 2 * * *" # Daily at 2 AM
-    tasks:
-      - id: backup_data
-        command: "tar -czf backup.tar.gz /data"
-        retry: 3
-      - id: upload_backup
-        depends_on: ["backup_data"]
-        command: "aws s3 cp backup.tar.gz s3://my-bucket/"
-        retry: 2
-```
-
-### 3. Run Your Workflow
-
-```bash
-# Validate configuration
-goliteflow validate --config=workflows.yml
-
-# Run once
-goliteflow run --config=workflows.yml
-
-# Generate report
-goliteflow report --output=report.html
-```
-
-### 4. View Results
-
-Open `report.html` in your browser to see execution details, logs, and statistics.
-
-**That's it!** You now have a working workflow scheduler.
-
-## Features
-
-- **YAML-based Configuration**: Define workflows and tasks in simple YAML files
-- **Cron Scheduling**: Built-in scheduler using cron syntax for task scheduling
-- **Retry Logic**: Configurable retry mechanisms with exponential backoff
-- **Task Dependencies**: Define task execution order with dependency management
-- **HTML Monitoring**: Generate beautiful HTML reports with execution history
-- **Enhanced Reports**: Enterprise-grade report management with automatic rotation and archival
-- **CLI Tool**: Command-line interface for running and managing workflows
-- **Library Interface**: Use as a Go library in your applications
-- **Zero External Dependencies**: No database or web server required
-- **Comprehensive Logging**: Built-in logging with zerolog
-
-## Feature Comparison
-
-| Feature                   | GoliteFlow            | Airflow                        | Prefect        | Temporal          |
-| ------------------------- | --------------------- | ------------------------------ | -------------- | ----------------- |
-| **Setup Complexity**      | ⭐ Simple             | ⭐⭐⭐ Complex                 | ⭐⭐ Medium    | ⭐⭐⭐ Complex    |
-| **External Dependencies** | ❌ None               | ✅ Database + Web              | ✅ Database    | ✅ Database + Web |
-| **Resource Usage**        | ⭐ Minimal            | ⭐⭐⭐ High                    | ⭐⭐ Medium    | ⭐⭐⭐ High       |
-| **YAML Configuration**    | ✅ Native             | ❌ Python                      | ❌ Python      | ❌ Code           |
-| **HTML Reports**          | ✅ Built-in           | ❌ External                    | ❌ External    | ❌ External       |
-| **CLI Tool**              | ✅ Full-featured      | ⭐ Basic                       | ⭐ Basic       | ⭐ Basic          |
-| **Go Integration**        | ✅ Native             | ❌ Python                      | ❌ Python      | ⭐ SDK            |
-| **Learning Curve**        | ⭐ Easy               | ⭐⭐⭐ Hard                    | ⭐⭐ Medium    | ⭐⭐⭐ Hard       |
-| **Perfect For**           | Small apps, Monoliths | Large teams, Complex workflows | Data pipelines | Microservices     |
-
-**Why GoliteFlow?**
-
-- **Zero setup** - No databases or web servers to configure
-- **Lightweight** - Perfect for small applications and monoliths
-- **Simple** - YAML configuration, no complex setup
-- **Self-contained** - Everything you need in one binary
-
-## Installation
-
-### As a Go Module
-
-```bash
-go get github.com/sintakaridina/goliteflow
-```
-
-### Download Binary
-
-Download the latest release for your platform:
+Choose your platform and download the latest release:
 
 ```bash
 # Linux/macOS
 curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-linux-amd64 -o goliteflow
 chmod +x goliteflow
 
-# Windows
+# Windows (PowerShell)
 curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-windows-amd64.exe -o goliteflow.exe
 
 # macOS (Apple Silicon)
@@ -132,288 +39,457 @@ curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/gol
 chmod +x goliteflow
 ```
 
-### Docker
+### Step 2: Create Your First Workflow
 
-```bash
-docker pull sintakaridina/goliteflow:latest
-docker run -v $(pwd):/workflows sintakaridina/goliteflow:latest run --config=/workflows/workflows.yml
-```
-
-## Usage
-
-### Library Usage
-
-```go
-package main
-
-import (
-    "log"
-    "github.com/sintakaridina/goliteflow"
-)
-
-func main() {
-    // Simple usage
-    err := goliteflow.Run("workflows.yml")
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    // With report generation
-    err = goliteflow.RunWithReport("workflows.yml", "report.html")
-    if err != nil {
-        log.Fatal(err)
-    }
-}
-```
-
-### CLI Usage
-
-```bash
-# Validate workflow configuration
-goliteflow validate --config=workflows.yml
-
-# Run workflow once
-goliteflow run --config=workflows.yml
-
-# Run as daemon (continuous scheduling)
-goliteflow run --config=workflows.yml --daemon
-
-# Generate HTML report
-goliteflow report --output=report.html
-
-# Show help
-goliteflow --help
-```
-
-## Configuration
-
-### Workflow Configuration
+Create a `my-workflow.yml` file:
 
 ```yaml
 version: "1.0"
 workflows:
-  - name: data_pipeline
-    schedule: "0 */6 * * *" # Every 6 hours
+  - name: hello_world_demo
+    schedule: "@manual" # Run manually for testing
     tasks:
-      - id: fetch_data
-        command: "curl -s https://api.example.com/data > data.json"
-        retry: 3
-        timeout: "5m"
-      - id: process_data
-        depends_on: ["fetch_data"]
-        command: "python process.py data.json"
-        retry: 2
-        timeout: "10m"
-      - id: send_notification
-        depends_on: ["process_data"]
-        command: "curl -X POST https://hooks.slack.com/..."
-        retry: 1
+      - id: greet
+        command: "echo Hello from GoliteFlow!"
+
+      - id: date_time
+        command: "date"
+        depends_on: ["greet"]
+
+      - id: system_info
+        command: "uname -a"
+        depends_on: ["date_time"]
 ```
 
-### Task Configuration
+### Step 3: Run Your Workflow
 
-| Field        | Type    | Required | Description                           |
-| ------------ | ------- | -------- | ------------------------------------- |
-| `id`         | string  | ✅       | Unique task identifier                |
-| `command`    | string  | ✅       | Command to execute                    |
-| `depends_on` | array   | ❌       | List of task IDs this task depends on |
-| `retry`      | integer | ❌       | Number of retry attempts (default: 0) |
-| `timeout`    | string  | ❌       | Task timeout (e.g., "5m", "1h")       |
-| `env`        | object  | ❌       | Environment variables                 |
+```bash
+# Run the workflow once
+./goliteflow run --config=my-workflow.yml
 
-## Examples
+# Generate beautiful HTML report
+./goliteflow report-enhanced --output=report.html
 
-### Data Processing Pipeline
+# Open report in browser
+open report.html  # macOS
+xdg-open report.html  # Linux
+start report.html  # Windows
+```
+
+### Step 4: Run Continuously (Production)
+
+```bash
+# Start daemon for continuous monitoring
+./goliteflow daemon --config=my-workflow.yml
+
+# The daemon will:
+# ✅ Monitor schedules 24/7
+# ✅ Auto-execute workflows when scheduled
+# ✅ Auto-generate HTML reports after each execution
+# ✅ Handle failures with retry logic
+# ✅ Manage report archival and cleanup
+```
+
+**🎉 That's it!** You now have a production-ready task scheduler with beautiful monitoring dashboard.
+
+## 💼 Real-World Examples
+
+### Python Data Pipeline
 
 ```yaml
 version: "1.0"
 workflows:
-  - name: daily_data_processing
-    schedule: "0 1 * * *" # Daily at 1 AM
+  - name: daily_etl
+    schedule: "0 2 * * *" # Every day at 2 AM
     tasks:
-      - id: download_data
-        command: "wget -O data.csv https://example.com/data.csv"
-        retry: 3
-      - id: validate_data
-        depends_on: ["download_data"]
-        command: "python validate.py data.csv"
-        retry: 2
+      - id: extract_data
+        command: "python scripts/extract_from_api.py"
+        retry_count: 3
+
       - id: transform_data
-        depends_on: ["validate_data"]
-        command: "python transform.py data.csv"
-        retry: 2
-      - id: load_data
+        command: "python scripts/clean_and_transform.py"
+        depends_on: ["extract_data"]
+
+      - id: load_to_database
+        command: "python scripts/load_to_postgres.py"
         depends_on: ["transform_data"]
-        command: "python load.py transformed_data.csv"
-        retry: 3
-      - id: cleanup
-        depends_on: ["load_data"]
-        command: "rm -f data.csv transformed_data.csv"
-        retry: 1
+
+      - id: send_report
+        command: "python scripts/email_summary.py"
+        depends_on: ["load_to_database"]
 ```
 
-### Backup Workflow
+### Node.js API Health Monitoring
 
 ```yaml
 version: "1.0"
 workflows:
-  - name: weekly_backup
-    schedule: "0 2 * * 0" # Every Sunday at 2 AM
+  - name: api_health_check
+    schedule: "*/5 * * * *" # Every 5 minutes
     tasks:
-      - id: create_backup
-        command: "tar -czf backup-$(date +%Y%m%d).tar.gz /important/data"
-        retry: 2
-        timeout: "2h"
-      - id: upload_to_s3
-        depends_on: ["create_backup"]
-        command: "aws s3 cp backup-*.tar.gz s3://my-backup-bucket/"
-        retry: 3
-        env:
-          AWS_ACCESS_KEY_ID: "your-key"
-          AWS_SECRET_ACCESS_KEY: "your-secret"
-      - id: verify_backup
-        depends_on: ["upload_to_s3"]
-        command: "aws s3 ls s3://my-backup-bucket/ | grep backup-"
-        retry: 2
-      - id: cleanup_local
-        depends_on: ["verify_backup"]
-        command: "rm -f backup-*.tar.gz"
-        retry: 1
+      - id: check_api_health
+        command: "node monitoring/health-check.js"
+
+      - id: alert_on_failure
+        command: "node monitoring/send-slack-alert.js"
+        condition: "on_failure" # Only run if health check fails
 ```
 
-## Enhanced Report Management
+### Multi-Language DevOps Pipeline
 
-GoliteFlow provides enterprise-grade report management for production deployments, addressing the common issue of unbounded HTML report growth over time.
+```yaml
+version: "1.0"
+workflows:
+  - name: deployment_pipeline
+    schedule: "0 0 * * 1" # Weekly on Monday
+    tasks:
+      - id: pull_latest_code
+        command: "git pull origin main"
 
-### Problem: Report Scaling Issues
+      - id: install_dependencies
+        command: "npm install"
+        depends_on: ["pull_latest_code"]
 
-In production environments running 24/7 for months or years, traditional HTML reports can grow to gigabytes in size, causing:
+      - id: run_tests
+        command: "python -m pytest tests/"
+        depends_on: ["install_dependencies"]
 
-- Slow loading times
-- High memory usage
-- Poor user experience
-- Storage concerns
+      - id: build_application
+        command: "npm run build"
+        depends_on: ["run_tests"]
 
-### Solution: Intelligent Report Management
+      - id: deploy_to_staging
+        command: "bash deploy/staging.sh"
+        depends_on: ["build_application"]
+```
 
-The enhanced report system provides:
+## 📊 Enhanced HTML Reports
 
-- **🔄 Automatic Rotation**: Limits main report to configurable number of recent executions
-- **📦 Monthly Archival**: Archives older execution data organized by month
-- **🧹 Automatic Cleanup**: Removes very old archived data based on retention policies
-- **⚡ Fast Performance**: Constant loading time regardless of execution history
-- **📊 Rich Analytics**: Comprehensive statistics and workflow summaries
+GoliteFlow generates beautiful, production-ready HTML reports with:
 
-### Usage Examples
+### 📈 **Dashboard Features:**
+
+- **Execution Timeline** - Visual timeline of task execution
+- **Success/Failure Rates** - Statistics and trends
+- **Task Dependencies** - Visual dependency graph
+- **Performance Metrics** - Execution times and bottlenecks
+- **Error Logs** - Detailed error messages and stack traces
+- **Archive Management** - Automatic report rotation and cleanup
+
+### 🔧 **Report Configuration:**
+
+```yaml
+# Configure report behavior in your workflow
+version: "1.0"
+reporting:
+  max_executions: 50 # Keep latest 50 executions in main report
+  archive_after_days: 30 # Archive reports older than 30 days
+  cleanup_after_days: 90 # Delete archived reports after 90 days
+  page_size: 20 # Executions per page
+
+workflows:
+  # ... your workflows
+```
+
+### 📋 **Report Management Commands:**
 
 ```bash
-# Generate enhanced report (default settings)
-goliteflow report-enhanced -o report.html
+# Generate enhanced report (recommended)
+./goliteflow report-enhanced --output=report.html
 
-# Custom configuration for high-volume production
-goliteflow report-enhanced \
-  --max-executions 25 \
-  --archive-after 7 \
-  --cleanup-after 30 \
-  --output production_report.html
+# Configure report limits
+./goliteflow report-enhanced --max-executions=100 --page-size=25
 
-# Report management operations
-goliteflow report-manage stats          # View statistics
-goliteflow report-manage archive        # Archive old reports
-goliteflow report-manage cleanup        # Clean up old archives
+# Manage report archives
+./goliteflow report-manage stats      # Show statistics
+./goliteflow report-manage archive    # Archive old reports
+./goliteflow report-manage cleanup    # Clean up old archives
 ```
 
-### Configuration Options
+## 🛠️ Installation Options
 
-| Option             | Default | Description                          |
-| ------------------ | ------- | ------------------------------------ |
-| `--max-executions` | 50      | Max executions in main report        |
-| `--archive-after`  | 30      | Archive reports after N days         |
-| `--cleanup-after`  | 90      | Delete archived reports after N days |
-| `--page-size`      | 20      | Executions per page                  |
-| `--pagination`     | true    | Enable pagination                    |
+### Option 1: Download Binary (Recommended)
 
-### Production Deployment
+Download the pre-built binary for your platform from [GitHub Releases](https://github.com/sintakaridina/goliteflow/releases/latest).
 
-For continuous production deployments, set up automated maintenance:
+### Option 2: Install as Go Module
+
+If you're building a Go application:
 
 ```bash
-# Daily archival (cron job)
-0 2 * * * goliteflow report-manage archive
-
-# Weekly cleanup (cron job)
-0 3 * * 0 goliteflow report-manage cleanup
+go get github.com/sintakaridina/goliteflow
 ```
 
-📖 **Complete Guide**: See [Report Management Documentation](docs/report-management.md) for detailed configuration, troubleshooting, and best practices.
-
-## Development
-
-### Building from Source
+### Option 3: Build from Source
 
 ```bash
 git clone https://github.com/sintakaridina/goliteflow.git
 cd goliteflow
-go build -o goliteflow cmd/goliteflow/main.go
+make build
 ```
 
-### Running Tests
+## ⚙️ Configuration Reference
+
+### Basic Workflow Structure
+
+```yaml
+version: "1.0"
+workflows:
+  - name: "workflow_name"
+    schedule: "0 */6 * * *" # Cron expression or @manual
+    max_concurrent_tasks: 3
+    timeout: "30m"
+
+    tasks:
+      - id: "task_1"
+        command: "your-command here"
+        working_dir: "/path/to/directory"
+        env:
+          API_KEY: "your-api-key"
+          ENV: "production"
+        timeout: "10m"
+        retry_count: 3
+        retry_delay: "5s"
+
+      - id: "task_2"
+        command: "another-command"
+        depends_on: ["task_1"]
+        condition: "on_success" # on_success, on_failure, always
+```
+
+### Schedule Expressions
+
+| Expression    | Description       | Example        |
+| ------------- | ----------------- | -------------- |
+| `@manual`     | Run manually only | For testing    |
+| `@daily`      | Once per day      | `0 0 * * *`    |
+| `@hourly`     | Once per hour     | `0 * * * *`    |
+| `*/5 * * * *` | Every 5 minutes   | API monitoring |
+| `0 2 * * *`   | Daily at 2 AM     | Backup jobs    |
+| `0 9 * * 1`   | Mondays at 9 AM   | Weekly reports |
+
+### Report Management Configuration
+
+| Setting              | Default            | Description                          |
+| -------------------- | ------------------ | ------------------------------------ |
+| `max_executions`     | 50                 | Max executions in main report        |
+| `archive_after_days` | 30                 | Archive reports after N days         |
+| `cleanup_after_days` | 90                 | Delete archived reports after N days |
+| `page_size`          | 20                 | Executions per page                  |
+| `report_dir`         | `reports/`         | Main report directory                |
+| `archive_dir`        | `reports/archive/` | Archive directory                    |
+
+## 🚀 Production Deployment
+
+### Linux/macOS (systemd)
+
+1. **Create service file:** `/etc/systemd/system/goliteflow.service`
+
+```ini
+[Unit]
+Description=GoliteFlow Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=goliteflow
+WorkingDirectory=/opt/goliteflow
+ExecStart=/opt/goliteflow/goliteflow daemon --config=/opt/goliteflow/production.yml
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+2. **Enable and start:**
 
 ```bash
-go test ./...
+sudo systemctl enable goliteflow
+sudo systemctl start goliteflow
+sudo systemctl status goliteflow
 ```
 
-### Contributing
+### Docker Deployment
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+```dockerfile
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates python3 nodejs
+WORKDIR /app
+COPY goliteflow-linux-amd64 goliteflow
+COPY config.yml .
+RUN chmod +x goliteflow
+CMD ["./goliteflow", "daemon", "--config=config.yml"]
+```
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Windows Service
 
-## Community
+```powershell
+# Install as Windows service
+.\goliteflow.exe daemon --install --config=production.yml
 
-### Support Channels
+# Start service
+net start goliteflow
+```
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/sintakaridina/goliteflow/issues)
-- **GitHub Discussions**: [Ask questions and share ideas](https://github.com/sintakaridina/goliteflow/discussions)
-- **Documentation**: [Complete documentation](https://sintakaridina.github.io/goliteflow/)
+## 🔍 Monitoring & Troubleshooting
 
-### Contributing
+### Check Daemon Status
 
-We welcome contributions from the community! Here's how you can help:
+```bash
+# View daemon logs
+./goliteflow daemon --config=config.yml --log-level=debug
 
-- **Bug Reports**: Found a bug? Please report it on [GitHub Issues](https://github.com/sintakaridina/goliteflow/issues)
-- **Feature Requests**: Have an idea? Share it in [GitHub Discussions](https://github.com/sintakaridina/goliteflow/discussions)
-- **Code Contributions**: Submit a pull request following our [Contributing Guidelines](CONTRIBUTING.md)
-- **Documentation**: Help improve our documentation
-- **Examples**: Share your workflow examples
+# Check specific workflow status
+./goliteflow status --workflow=my_workflow
 
-### Code of Conduct
+# View execution history
+./goliteflow report-manage stats
+```
 
-This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold this code.
+### Common Issues
 
-## License
+**Issue: Tasks failing with "command not found"**
+
+```yaml
+# Solution: Use full paths or set working directory
+tasks:
+  - command: "/usr/bin/python3 /full/path/to/script.py"
+    working_dir: "/path/to/project"
+```
+
+**Issue: HTML report too slow to load**
+
+```bash
+# Solution: Reduce max executions in reports
+./goliteflow report-enhanced --max-executions=25
+```
+
+**Issue: Disk space growing**
+
+```bash
+# Solution: Configure automatic cleanup
+./goliteflow report-manage cleanup --older-than=60d
+```
+
+## 🤝 Integration Examples
+
+### Integrate with Existing Applications
+
+#### Python Flask App
+
+```python
+# In your Flask app
+import subprocess
+
+def trigger_goliteflow_task():
+    result = subprocess.run(['./goliteflow', 'run', '--config=tasks.yml'])
+    return result.returncode == 0
+```
+
+#### Node.js Express App
+
+```javascript
+// In your Express app
+const { exec } = require("child_process");
+
+app.post("/trigger-workflow", (req, res) => {
+  exec("./goliteflow run --config=tasks.yml", (error, stdout, stderr) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.json({ success: true, output: stdout });
+    }
+  });
+});
+```
+
+### Web Dashboard Integration
+
+Access reports via HTTP server:
+
+```bash
+# Start with web server
+./goliteflow daemon --config=config.yml --web-port=8080
+
+# Access dashboard at:
+# http://localhost:8080/reports/latest.html
+```
+
+## 📚 Examples
+
+Explore comprehensive examples in the [`examples/`](examples/) directory:
+
+- **Quick Demo** (`quick-demo.yml`) - 2-minute setup test
+- **File Processing** (`file-processing-workflow.yml`) - ETL pipeline with Python
+- **API Monitoring** (`api-monitoring-workflow.yml`) - Health check automation
+- **Backup & Cleanup** (`backup-cleanup-workflow.yml`) - Maintenance tasks
+
+```bash
+cd examples/
+../goliteflow run --config=quick-demo.yml
+../goliteflow report-enhanced --output=demo-report.html
+```
+
+## 💡 Tips for Beginners
+
+### Start Simple
+
+1. **Begin with `@manual` schedule** for testing
+2. **Use simple commands** like `echo` first
+3. **Check HTML reports** to understand execution flow
+4. **Add complexity gradually** (dependencies, retries, etc.)
+
+### Best Practices
+
+- ✅ **Use full paths** in commands
+- ✅ **Set working directories** for scripts
+- ✅ **Handle errors gracefully** with conditions
+- ✅ **Monitor with HTML reports** regularly
+- ✅ **Use environment variables** for configuration
+- ✅ **Test workflows manually** before scheduling
+
+### Common Patterns
+
+```yaml
+# Error notification pattern
+- id: main_task
+  command: "python important_job.py"
+
+- id: notify_on_error
+  command: "python send_alert.py"
+  depends_on: ["main_task"]
+  condition: "on_failure"
+
+# Backup pattern
+- id: create_backup
+  command: "mysqldump mydb > backup.sql"
+
+- id: upload_backup
+  command: "aws s3 cp backup.sql s3://backups/"
+  depends_on: ["create_backup"]
+
+- id: cleanup_local
+  command: "rm backup.sql"
+  depends_on: ["upload_backup"]
+```
+
+## 📖 Documentation
+
+- **[Report Management Guide](docs/report-management.md)** - Comprehensive guide for production report management
+- **[Examples Directory](examples/)** - Real-world workflow examples
+- **[Build Instructions](BUILD.md)** - How to build from source
+
+## 🆘 Support
+
+- **GitHub Issues**: [Report bugs or request features](https://github.com/sintakaridina/goliteflow/issues)
+- **Discussions**: [Ask questions and share workflows](https://github.com/sintakaridina/goliteflow/discussions)
+- **Examples**: Check the `examples/` directory for real-world use cases
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- [robfig/cron](https://github.com/robfig/cron) for cron scheduling
-- [rs/zerolog](https://github.com/rs/zerolog) for structured logging
-- [spf13/cobra](https://github.com/spf13/cobra) for CLI framework
-- [gopkg.in/yaml.v3](https://gopkg.in/yaml.v3) for YAML parsing
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
-
 ---
 
-**Made with ❤️ by [sintakaridina](https://github.com/sintakaridina)**
-
-[![GitHub Stars](https://img.shields.io/github/stars/sintakaridina/goliteflow?style=social)](https://github.com/sintakaridina/goliteflow/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/sintakaridina/goliteflow?style=social)](https://github.com/sintakaridina/goliteflow/network)
-[![GitHub Watchers](https://img.shields.io/github/watchers/sintakaridina/goliteflow?style=social)](https://github.com/sintakaridina/goliteflow/watchers)
+**🚀 Ready to get started?** Download the binary, create a simple YAML file, and run your first workflow in under 5 minutes!
