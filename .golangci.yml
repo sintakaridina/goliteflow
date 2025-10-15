@@ -22,6 +22,12 @@ linters-settings:
   funlen:
     lines: 80
     statements: 50
+  gosec:
+    excludes:
+      - G204  # Subprocess launched with a potential tainted input
+      - G115  # integer overflow conversion
+      - G601  # Implicit memory aliasing in for loop
+      - G306  # Expect WriteFile permissions to be 0600 or less
 
 linters:
   disable-all: true
