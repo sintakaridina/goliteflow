@@ -1,13 +1,12 @@
 # Binaries for programs and plugins
 *.exe
-!releases/*.exe  # Allow release binaries
 *.exe~
 *.dll
 *.so
 *.dylib
 goliteflow
 goliteflow-test
-# goliteflow-*  # Commented out to allow release binaries
+goliteflow-*
 
 # Test binary, built with `go test -c`
 *.test
@@ -61,6 +60,7 @@ reports/
 dist/
 build/
 bin/
+releases/
 
 # Environment files
 .env
