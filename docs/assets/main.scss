@@ -1,0 +1,506 @@
+---
+---
+
+@import "minima";
+
+// Custom variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$text-color: #2c3e50;
+$light-gray: #f8f9fa;
+$border-color: #e1e5e9;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+// Reset and base styles
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  line-height: 1.6;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// Header styles
+.site-header {
+  background: #ffffff;
+  border-bottom: 1px solid $border-color;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $text-color;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.site-title:hover {
+  color: $primary-color;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-trigger {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.trigger {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-link {
+  color: $secondary-color;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.page-link:hover {
+  color: $primary-color;
+}
+
+// Main content
+.page-content {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}
+
+// Hero section
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  margin-bottom: 4rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+  color: $text-color;
+  letter-spacing: -0.02em;
+}
+
+.hero .lead {
+  font-size: 1.25rem;
+  color: $secondary-color;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: $primary-color;
+  color: white;
+  border-color: $primary-color;
+}
+
+.btn-primary:hover {
+  background: darken($primary-color, 10%);
+  border-color: darken($primary-color, 10%);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-secondary:hover {
+  background: $primary-color;
+  color: white;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+// Features grid
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.feature-card {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: left;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.feature-card:hover {
+  border-color: $primary-color;
+  box-shadow: 0 8px 25px rgba(0,123,255,0.1);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  background: $light-gray;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: $primary-color;
+}
+
+.feature-card h3 {
+  color: $text-color;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: $secondary-color;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Comparison section
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 4rem 0;
+}
+
+.pros, .use-cases {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.pros h3, .use-cases h3 {
+  color: $text-color;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.pros ul, .use-cases ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pros li, .use-cases li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f3f4;
+  color: #495057;
+}
+
+.pros li:last-child, .use-cases li:last-child {
+  border-bottom: none;
+}
+
+// Badges
+.badges {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.badges img {
+  margin: 0 0.5rem;
+  height: 24px;
+}
+
+// Community section
+.community {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.community-item {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.community-item:hover {
+  border-color: $primary-color;
+  box-shadow: 0 8px 25px rgba(0,123,255,0.1);
+  transform: translateY(-2px);
+}
+
+.community-item h4 {
+  color: $text-color;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.community-item p {
+  color: $secondary-color;
+  margin: 0;
+}
+
+// Footer CTA
+.footer-cta {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: $light-gray;
+  border-radius: 12px;
+  margin: 4rem 0;
+}
+
+.footer-cta h3 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+  color: $text-color;
+}
+
+.footer-cta p {
+  font-size: 1.1rem;
+  margin: 0 0 2rem 0;
+  color: $secondary-color;
+}
+
+// Footer
+.site-footer {
+  background: $light-gray;
+  border-top: 1px solid $border-color;
+  padding: 3rem 0 1rem 0;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  color: $text-color;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.footer-section h4 {
+  color: $text-color;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer-section p {
+  color: $secondary-color;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+  color: $secondary-color;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+  color: $primary-color;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $secondary-color;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: $primary-color;
+}
+
+.footer-bottom {
+  border-top: 1px solid $border-color;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: $secondary-color;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero .lead {
+    font-size: 1.1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .comparison {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .community {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .nav-trigger {
+    display: block;
+  }
+  
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .trigger {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid $border-color;
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .nav-trigger:checked ~ .trigger {
+    display: flex;
+  }
+  
+  .page-link {
+    padding: 0.75rem 2rem;
+    display: block;
+    border-bottom: 1px solid #f1f3f4;
+  }
+  
+  .page-link:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
+  }
+  
+  .pros, .use-cases {
+    padding: 1.5rem;
+  }
+}

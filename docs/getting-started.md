@@ -41,7 +41,7 @@ curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/gol
 docker pull sintakaridina/goliteflow:latest
 ```
 
-## 🎯 Your First Workflow
+## Your First Workflow
 
 Let's create a simple workflow to get you started.
 
@@ -98,7 +98,7 @@ Report generated: report.html
 
 Open the generated `report.html` file in your browser to see the execution details.
 
-## 🔧 CLI Commands
+## CLI Commands
 
 GoliteFlow provides several CLI commands:
 
@@ -318,12 +318,12 @@ goliteflow run --config=workflows.yml --verbose
 
 ### Getting Help
 
-- 📖 **Documentation**: Check the [Configuration Reference](/configuration)
-- 🐛 **Issues**: Report bugs on [GitHub Issues](https://github.com/sintakaridina/goliteflow/issues)
-- 💬 **Discussions**: Ask questions in [GitHub Discussions](https://github.com/sintakaridina/goliteflow/discussions)
-- 📧 **Email**: Contact the maintainer
+- **Documentation**: Check the [Configuration Reference](/configuration)
+- **Issues**: Report bugs on [GitHub Issues](https://github.com/sintakaridina/goliteflow/issues)
+- **Discussions**: Ask questions in [GitHub Discussions](https://github.com/sintakaridina/goliteflow/discussions)
+- **Email**: Contact the maintainer
 
-## 🎉 Next Steps
+## Next Steps
 
 Now that you have GoliteFlow running, here's what you can do next:
 
