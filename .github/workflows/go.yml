@@ -1,4 +1,4 @@
-name: Go
+name: CI
 
 on:
   push:
@@ -7,15 +7,15 @@ on:
     branches: [ main, dev ]
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [1.19, 1.20, 1.21, 1.22]
+        go-version: [1.19, 1.20, 1.21]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -66,15 +66,16 @@ jobs:
     needs: test
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: 1.22
+        go-version: 1.21
 
     - name: Build
-      run: go build -v ./cmd/goliteflow
+      run: go build -v -o goliteflow ./cmd/goliteflow
 
     - name: Test build
       run: |
@@ -86,12 +87,13 @@ jobs:
     needs: test
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: 1.22
+        go-version: 1.21
 
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v3
@@ -104,12 +106,13 @@ jobs:
     needs: test
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: 1.22
+        go-version: 1.21
 
     - name: Run Gosec Security Scanner
       uses: securecodewarrior/github-action-gosec@master
@@ -127,14 +130,15 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: 1.22
+        go-version: 1.21
 
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v4
