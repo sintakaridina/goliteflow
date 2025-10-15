@@ -1,0 +1,33 @@
+version: "1.0"
+workflows:
+  - name: daily_file_processing
+    schedule: "0 9 * * *" # Daily at 9 AM
+    tasks:
+      - id: create_sample_data
+        command: "python scripts/generate_sample_data.py"
+        retry: 2
+        timeout: "30s"
+
+      - id: validate_csv
+        depends_on: ["create_sample_data"]
+        command: "python scripts/validate_csv.py data/sample_data.csv"
+        retry: 3
+        timeout: "60s"
+
+      - id: process_data
+        depends_on: ["validate_csv"]
+        command: "python scripts/process_data.py data/sample_data.csv data/processed_data.csv"
+        retry: 2
+        timeout: "120s"
+
+      - id: generate_summary
+        depends_on: ["process_data"]
+        command: "python scripts/generate_summary.py data/processed_data.csv data/summary_report.txt"
+        retry: 1
+        timeout: "30s"
+
+      - id: cleanup_temp_files
+        depends_on: ["generate_summary"]
+        command: "python scripts/cleanup.py"
+        retry: 1
+        timeout: "15s"

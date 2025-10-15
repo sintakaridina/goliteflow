@@ -1,0 +1,27 @@
+version: "1.0"
+workflows:
+  - name: quick_demo
+    schedule: "0 * * * *" # Run hourly (for testing)
+    tasks:
+      - id: system_info
+        command: 'python -c "import platform, datetime; print(\"System:\", platform.system(), platform.release()); print(\"Python:\", platform.python_version()); print(\"Time:\", datetime.datetime.now())"'
+        retry: 1
+        timeout: "10s"
+
+      - id: create_test_file
+        depends_on: ["system_info"]
+        command: 'python -c "import os, datetime, platform; os.makedirs(\"data\", exist_ok=True); open(\"data/test.txt\", \"w\").write(f\"GoliteFlow test file\\nCreated: {datetime.datetime.now()}\\nHostname: {platform.node()}\\n\")"'
+        retry: 2
+        timeout: "5s"
+
+      - id: read_test_file
+        depends_on: ["create_test_file"]
+        command: 'python -c "print(\"Test file contents:\"); print(open(\"data/test.txt\").read())"'
+        retry: 1
+        timeout: "5s"
+
+      - id: file_stats
+        depends_on: ["read_test_file"]
+        command: 'python -c "import os; size=os.path.getsize(\"data/test.txt\"); print(f\"File size: {size} bytes\"); print(\"Demo completed successfully!\")"'
+        retry: 1
+        timeout: "5s"

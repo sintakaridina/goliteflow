@@ -1,0 +1,10 @@
+GOLITEFLOW CLEANUP SUMMARY
+========================================
+Timestamp: 2025-10-15 16:58:08
+Files archived: 2
+Files removed: 0
+Output directory: outputs/run_20251015_165808
+
+Archived files:
+  - processed_data.csv
+  - summary_report.txt

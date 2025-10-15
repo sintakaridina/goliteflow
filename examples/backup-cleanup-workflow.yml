@@ -1,0 +1,53 @@
+version: "1.0"
+workflows:
+  - name: daily_backup_cleanup
+    schedule: "0 2 * * *" # Daily at 2 AM
+    tasks:
+      - id: create_data_backup
+        command: "python scripts/create_backup.py data/ backups/"
+        retry: 3
+        timeout: "300s"
+
+      - id: compress_backup
+        depends_on: ["create_data_backup"]
+        command: "python scripts/compress_backup.py"
+        retry: 2
+        timeout: "180s"
+
+      - id: verify_backup
+        depends_on: ["compress_backup"]
+        command: "python scripts/verify_backup.py"
+        retry: 2
+        timeout: "60s"
+
+      - id: cleanup_old_backups
+        depends_on: ["verify_backup"]
+        command: "python scripts/cleanup_old_backups.py backups/ 7"
+        retry: 1
+        timeout: "30s"
+
+      - id: cleanup_temp_logs
+        depends_on: ["cleanup_old_backups"]
+        command: "python scripts/cleanup_logs.py logs/ 30"
+        retry: 1
+        timeout: "15s"
+
+  - name: weekly_deep_cleanup
+    schedule: "0 3 * * 0" # Weekly on Sunday at 3 AM
+    tasks:
+      - id: analyze_disk_usage
+        command: "python scripts/disk_usage_report.py"
+        retry: 1
+        timeout: "60s"
+
+      - id: clean_cache_files
+        depends_on: ["analyze_disk_usage"]
+        command: "python scripts/clean_cache.py"
+        retry: 2
+        timeout: "120s"
+
+      - id: optimize_database
+        depends_on: ["clean_cache_files"]
+        command: "python scripts/optimize_db.py"
+        retry: 3
+        timeout: "600s"

@@ -1,0 +1,41 @@
+version: "1.0"
+workflows:
+  - name: api_health_monitoring
+    schedule: "*/15 * * * *" # Every 15 minutes
+    tasks:
+      - id: check_api_status
+        command: "curl -f -s -o logs/api_response.json https://httpbin.org/json"
+        retry: 3
+        timeout: "30s"
+
+      - id: validate_response
+        depends_on: ["check_api_status"]
+        command: "python scripts/validate_api_response.py logs/api_response.json"
+        retry: 2
+        timeout: "15s"
+
+      - id: log_status
+        depends_on: ["validate_response"]
+        command: "python scripts/log_api_status.py"
+        retry: 1
+        timeout: "10s"
+
+  - name: website_uptime_check
+    schedule: "*/5 * * * *" # Every 5 minutes
+    tasks:
+      - id: ping_website
+        command: "curl -I -s -w '%{http_code}' -o /dev/null https://httpbin.org/status/200"
+        retry: 3
+        timeout: "15s"
+
+      - id: check_response_time
+        depends_on: ["ping_website"]
+        command: "python scripts/measure_response_time.py https://httpbin.org/delay/1"
+        retry: 2
+        timeout: "30s"
+
+      - id: alert_if_down
+        depends_on: ["check_response_time"]
+        command: "python scripts/check_alerts.py"
+        retry: 1
+        timeout: "10s"

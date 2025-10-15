@@ -13,12 +13,14 @@ A lightweight workflow scheduler and task orchestrator designed for monolithic o
 ## Screenshots
 
 ### HTML Report Dashboard
-![HTML Report](docs/screenshots/html-report.png)
-*Beautiful HTML reports with execution history, task details, and interactive interface*
+
+![HTML Report](docs/screenshots/html-report.jpg)
+_Beautiful HTML reports with execution history, task details, and interactive interface_
 
 ### CLI Usage
+
 ![CLI Usage](docs/screenshots/cli-usage.png)
-*Easy-to-use command-line interface for workflow management*
+_Easy-to-use command-line interface for workflow management_
 
 ## Quick Start (5 Minutes)
 
@@ -41,7 +43,7 @@ Create `workflows.yml`:
 version: "1.0"
 workflows:
   - name: daily_backup
-    schedule: "0 2 * * *"  # Daily at 2 AM
+    schedule: "0 2 * * *" # Daily at 2 AM
     tasks:
       - id: backup_data
         command: "tar -czf backup.tar.gz /data"
@@ -85,19 +87,20 @@ Open `report.html` in your browser to see execution details, logs, and statistic
 
 ## Feature Comparison
 
-| Feature | GoliteFlow | Airflow | Prefect | Temporal |
-|---------|------------|---------|---------|----------|
-| **Setup Complexity** | ⭐ Simple | ⭐⭐⭐ Complex | ⭐⭐ Medium | ⭐⭐⭐ Complex |
-| **External Dependencies** | ❌ None | ✅ Database + Web | ✅ Database | ✅ Database + Web |
-| **Resource Usage** | ⭐ Minimal | ⭐⭐⭐ High | ⭐⭐ Medium | ⭐⭐⭐ High |
-| **YAML Configuration** | ✅ Native | ❌ Python | ❌ Python | ❌ Code |
-| **HTML Reports** | ✅ Built-in | ❌ External | ❌ External | ❌ External |
-| **CLI Tool** | ✅ Full-featured | ⭐ Basic | ⭐ Basic | ⭐ Basic |
-| **Go Integration** | ✅ Native | ❌ Python | ❌ Python | ⭐ SDK |
-| **Learning Curve** | ⭐ Easy | ⭐⭐⭐ Hard | ⭐⭐ Medium | ⭐⭐⭐ Hard |
-| **Perfect For** | Small apps, Monoliths | Large teams, Complex workflows | Data pipelines | Microservices |
+| Feature                   | GoliteFlow            | Airflow                        | Prefect        | Temporal          |
+| ------------------------- | --------------------- | ------------------------------ | -------------- | ----------------- |
+| **Setup Complexity**      | ⭐ Simple             | ⭐⭐⭐ Complex                 | ⭐⭐ Medium    | ⭐⭐⭐ Complex    |
+| **External Dependencies** | ❌ None               | ✅ Database + Web              | ✅ Database    | ✅ Database + Web |
+| **Resource Usage**        | ⭐ Minimal            | ⭐⭐⭐ High                    | ⭐⭐ Medium    | ⭐⭐⭐ High       |
+| **YAML Configuration**    | ✅ Native             | ❌ Python                      | ❌ Python      | ❌ Code           |
+| **HTML Reports**          | ✅ Built-in           | ❌ External                    | ❌ External    | ❌ External       |
+| **CLI Tool**              | ✅ Full-featured      | ⭐ Basic                       | ⭐ Basic       | ⭐ Basic          |
+| **Go Integration**        | ✅ Native             | ❌ Python                      | ❌ Python      | ⭐ SDK            |
+| **Learning Curve**        | ⭐ Easy               | ⭐⭐⭐ Hard                    | ⭐⭐ Medium    | ⭐⭐⭐ Hard       |
+| **Perfect For**           | Small apps, Monoliths | Large teams, Complex workflows | Data pipelines | Microservices     |
 
 **Why GoliteFlow?**
+
 - **Zero setup** - No databases or web servers to configure
 - **Lightweight** - Perfect for small applications and monoliths
 - **Simple** - YAML configuration, no complex setup
@@ -153,7 +156,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    
+
     // With report generation
     err = goliteflow.RunWithReport("workflows.yml", "report.html")
     if err != nil {
@@ -189,7 +192,7 @@ goliteflow --help
 version: "1.0"
 workflows:
   - name: data_pipeline
-    schedule: "0 */6 * * *"  # Every 6 hours
+    schedule: "0 */6 * * *" # Every 6 hours
     tasks:
       - id: fetch_data
         command: "curl -s https://api.example.com/data > data.json"
@@ -208,14 +211,14 @@ workflows:
 
 ### Task Configuration
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | ✅ | Unique task identifier |
-| `command` | string | ✅ | Command to execute |
-| `depends_on` | array | ❌ | List of task IDs this task depends on |
-| `retry` | integer | ❌ | Number of retry attempts (default: 0) |
-| `timeout` | string | ❌ | Task timeout (e.g., "5m", "1h") |
-| `env` | object | ❌ | Environment variables |
+| Field        | Type    | Required | Description                           |
+| ------------ | ------- | -------- | ------------------------------------- |
+| `id`         | string  | ✅       | Unique task identifier                |
+| `command`    | string  | ✅       | Command to execute                    |
+| `depends_on` | array   | ❌       | List of task IDs this task depends on |
+| `retry`      | integer | ❌       | Number of retry attempts (default: 0) |
+| `timeout`    | string  | ❌       | Task timeout (e.g., "5m", "1h")       |
+| `env`        | object  | ❌       | Environment variables                 |
 
 ## Examples
 
@@ -225,7 +228,7 @@ workflows:
 version: "1.0"
 workflows:
   - name: daily_data_processing
-    schedule: "0 1 * * *"  # Daily at 1 AM
+    schedule: "0 1 * * *" # Daily at 1 AM
     tasks:
       - id: download_data
         command: "wget -O data.csv https://example.com/data.csv"
@@ -254,7 +257,7 @@ workflows:
 version: "1.0"
 workflows:
   - name: weekly_backup
-    schedule: "0 2 * * 0"  # Every Sunday at 2 AM
+    schedule: "0 2 * * 0" # Every Sunday at 2 AM
     tasks:
       - id: create_backup
         command: "tar -czf backup-$(date +%Y%m%d).tar.gz /important/data"

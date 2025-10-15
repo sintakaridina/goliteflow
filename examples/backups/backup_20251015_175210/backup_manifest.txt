@@ -1,0 +1,12 @@
+GOLITEFLOW BACKUP MANIFEST
+========================================
+Created: 2025-10-15 17:52:10
+Source: E:\Programku\Goliteflow\examples\data
+Backup: E:\Programku\Goliteflow\examples\backups\backup_20251015_175210
+Files: 3
+Size: 19,211 bytes (0.02 MB)
+
+File listing:
+  processed_data.csv (11,114 bytes)
+  sample_data.csv (6,136 bytes)
+  summary_report.txt (1,961 bytes)
