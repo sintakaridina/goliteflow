@@ -80,6 +80,7 @@ Open `report.html` in your browser to see execution details, logs, and statistic
 - **Retry Logic**: Configurable retry mechanisms with exponential backoff
 - **Task Dependencies**: Define task execution order with dependency management
 - **HTML Monitoring**: Generate beautiful HTML reports with execution history
+- **Enhanced Reports**: Enterprise-grade report management with automatic rotation and archival
 - **CLI Tool**: Command-line interface for running and managing workflows
 - **Library Interface**: Use as a Go library in your applications
 - **Zero External Dependencies**: No database or web server required
@@ -279,6 +280,72 @@ workflows:
         command: "rm -f backup-*.tar.gz"
         retry: 1
 ```
+
+## Enhanced Report Management
+
+GoliteFlow provides enterprise-grade report management for production deployments, addressing the common issue of unbounded HTML report growth over time.
+
+### Problem: Report Scaling Issues
+
+In production environments running 24/7 for months or years, traditional HTML reports can grow to gigabytes in size, causing:
+
+- Slow loading times
+- High memory usage
+- Poor user experience
+- Storage concerns
+
+### Solution: Intelligent Report Management
+
+The enhanced report system provides:
+
+- **🔄 Automatic Rotation**: Limits main report to configurable number of recent executions
+- **📦 Monthly Archival**: Archives older execution data organized by month
+- **🧹 Automatic Cleanup**: Removes very old archived data based on retention policies
+- **⚡ Fast Performance**: Constant loading time regardless of execution history
+- **📊 Rich Analytics**: Comprehensive statistics and workflow summaries
+
+### Usage Examples
+
+```bash
+# Generate enhanced report (default settings)
+goliteflow report-enhanced -o report.html
+
+# Custom configuration for high-volume production
+goliteflow report-enhanced \
+  --max-executions 25 \
+  --archive-after 7 \
+  --cleanup-after 30 \
+  --output production_report.html
+
+# Report management operations
+goliteflow report-manage stats          # View statistics
+goliteflow report-manage archive        # Archive old reports
+goliteflow report-manage cleanup        # Clean up old archives
+```
+
+### Configuration Options
+
+| Option             | Default | Description                          |
+| ------------------ | ------- | ------------------------------------ |
+| `--max-executions` | 50      | Max executions in main report        |
+| `--archive-after`  | 30      | Archive reports after N days         |
+| `--cleanup-after`  | 90      | Delete archived reports after N days |
+| `--page-size`      | 20      | Executions per page                  |
+| `--pagination`     | true    | Enable pagination                    |
+
+### Production Deployment
+
+For continuous production deployments, set up automated maintenance:
+
+```bash
+# Daily archival (cron job)
+0 2 * * * goliteflow report-manage archive
+
+# Weekly cleanup (cron job)
+0 3 * * 0 goliteflow report-manage cleanup
+```
+
+📖 **Complete Guide**: See [Report Management Documentation](docs/report-management.md) for detailed configuration, troubleshooting, and best practices.
 
 ## Development
 
