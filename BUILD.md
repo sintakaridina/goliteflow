@@ -56,35 +56,58 @@ GOOS=darwin GOARCH=arm64 CGO_ENABLED=0 go build -ldflags "-s -w" -o releases/gol
 chmod +x releases/goliteflow-linux-amd64 releases/goliteflow-darwin-arm64
 ```
 
-## Automated Releases with GitHub Actions
+## Manual Release Process
 
-The project includes a GitHub Actions workflow (`.github/workflows/release.yml`) that automatically:
+Since we're not using automated GitHub Actions, you'll need to create releases manually:
 
-1. **Builds binaries** for all three platforms when you create a release tag
-2. **Uploads binaries** to the GitHub release
-3. **Creates release notes** with download instructions
+### Step 1: Build the Binaries
 
-### To create a release:
+```bash
+# Using PowerShell on Windows
+PowerShell -ExecutionPolicy Bypass -File scripts/build-release.ps1
 
-1. **Create and push a tag:**
+# Or using Makefile
+make release-binaries
+```
 
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
+### Step 2: Create GitHub Release
 
-2. **Or trigger manually:**
+1. **Go to GitHub repository** → Releases → "Create a new release"
+2. **Choose a tag**: Create new tag (e.g., `v1.0.1`)
+3. **Release title**: `GoliteFlow v1.0.1`
+4. **Upload binaries**: Drag and drop the 3 files from `releases/` folder:
+   - `goliteflow-linux-amd64`
+   - `goliteflow-windows-amd64.exe`
+   - `goliteflow-darwin-arm64`
+5. **Add release notes** (see template below)
 
-   - Go to GitHub Actions tab
-   - Select "Release" workflow
-   - Click "Run workflow"
-   - Enter tag name (e.g., `v1.0.0`)
+### Step 3: Release Notes Template
 
-3. **The workflow will automatically:**
-   - Create a GitHub release
-   - Build binaries for all platforms
-   - Upload binaries with the correct names
-   - Generate release notes
+```markdown
+## GoliteFlow v1.0.1
+
+### Download Instructions
+
+#### Linux (AMD64)
+
+\`\`\`bash
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-linux-amd64 -o goliteflow
+chmod +x goliteflow
+\`\`\`
+
+#### Windows (AMD64)
+
+\`\`\`bash
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-windows-amd64.exe -o goliteflow.exe
+\`\`\`
+
+#### macOS (Apple Silicon)
+
+\`\`\`bash
+curl -L https://github.com/sintakaridina/goliteflow/releases/latest/download/goliteflow-darwin-arm64 -o goliteflow
+chmod +x goliteflow
+\`\`\`
+```
 
 ## Binary Names and URLs
 
